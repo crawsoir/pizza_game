@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://biag51tci0d3v"]
+
+[ext_resource type="Script" path="res://Gamepad/Letter.gd" id="1_1cm4d"]
+[ext_resource type="Script" path="res://Gamepad/letter_highway.gd" id="1_ngcs6"]
+[ext_resource type="Script" path="res://Gamepad/KeyPressArea.gd" id="1_tdf2o"]
+[ext_resource type="Texture2D" uid="uid://mnwuc2mk83cn" path="res://icon.svg" id="2_8o5y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yldku"]
+size = Vector2(48, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
+size = Vector2(48.9998, 49.0002)
+
+[node name="LetterHighway" type="Node2D"]
+script = ExtResource("1_ngcs6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true
+
+[node name="OutKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -104)
+script = ExtResource("1_tdf2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="LateKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
+script = ExtResource("1_tdf2o")
+score = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LateKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="PerfectKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("1_tdf2o")
+score = 60
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="EarlyKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
+script = ExtResource("1_tdf2o")
+score = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="Letter" type="CharacterBody2D" parent="."]
+position = Vector2(0, 320)
+script = ExtResource("1_1cm4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Letter"]
+position = Vector2(0.0885313, 0.146557)
+scale = Vector2(0.379862, 0.380734)
+texture = ExtResource("2_8o5y4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Letter"]
+shape = SubResource("RectangleShape2D_rhswe")
+
+[connection signal="body_entered" from="OutKeyPressArea" to="Letter" method="_on_out_key_press_area_body_entered"]
+[connection signal="body_entered" from="LateKeyPressArea" to="Letter" method="_on_late_key_press_area_body_entered"]
+[connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
+[connection signal="body_exited" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_exited"]
+[connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
