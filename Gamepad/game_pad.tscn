@@ -1,9 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://djujc4ihhsif0"]
+[gd_scene load_steps=6 format=3 uid="uid://08vcnpvprh3y"]
 
 [ext_resource type="PackedScene" uid="uid://biag51tci0d3v" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
+[ext_resource type="Script" path="res://Gamepad/sus_meter.gd" id="2_f7cem"]
+
+[sub_resource type="Theme" id="Theme_ujehj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msdag"]
+bg_color = Color(0.899059, 0.435421, 0.466352, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1c4w"]
+bg_color = Color(0.145038, 0.702115, 0.509318, 1)
 
 [node name="GamePad" type="Node2D"]
 
 [node name="LetterHighway" parent="." instance=ExtResource("1_tgj43")]
+position = Vector2(24, 104)
 speed = 50
 key_to_press = "d_key"
+
+[node name="SusMeter" type="ProgressBar" parent="."]
+offset_right = 384.0
+offset_bottom = 27.0
+theme = SubResource("Theme_ujehj")
+theme_override_styles/background = SubResource("StyleBoxFlat_msdag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a1c4w")
+value = 50.0
+script = ExtResource("2_f7cem")
+
+[connection signal="changeSusAmount" from="LetterHighway" to="SusMeter" method="_on_letter_highway_change_sus_amount"]

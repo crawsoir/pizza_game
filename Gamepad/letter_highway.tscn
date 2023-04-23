@@ -71,3 +71,4 @@ shape = SubResource("RectangleShape2D_rhswe")
 [connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
 [connection signal="body_exited" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_exited"]
 [connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
+[connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]

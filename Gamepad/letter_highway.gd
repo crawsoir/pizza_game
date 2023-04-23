@@ -1,5 +1,6 @@
 class_name Highway
 extends Node2D
+signal changeSusAmount
 
 @export var speed = 100
 @export var letter = "m"
@@ -21,3 +22,7 @@ func get_letter():
 	
 func get_key_to_press():
 	return key_to_press
+
+
+func _on_letter_letter_highway_pressed(amount):
+	emit_signal("changeSusAmount", amount)
