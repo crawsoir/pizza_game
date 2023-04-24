@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://signal_bus.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 a_key={
