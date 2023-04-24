@@ -3,6 +3,7 @@ extends Node2D
 signal letterHighwayPressed
 
 @onready var highway: Highway = get_parent()
+@onready var sprite: Sprite2D = get_node("Sprite2D")
 
 enum LetterState {RISING, EARLY, PERFECT, LATE, OUT_OF_BOUNDS}
 
@@ -34,6 +35,7 @@ func _input(event):
 			LetterState.OUT_OF_BOUNDS:
 				print("OUT OF BOUNDS")
 			_:
+				emit_signal("letterHighwayPressed", score)
 				return
 		emit_signal("letterHighwayPressed", score)
 		queue_free()

@@ -5,6 +5,8 @@ signal changeSusAmount
 @export var speed = 100
 @export var letter = "m"
 @export var key_to_press = "space"
+const Letter = preload("res://Gamepad/letter.tscn")
+@onready var keyPressArea: Sprite2D = get_node("Sprite2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
