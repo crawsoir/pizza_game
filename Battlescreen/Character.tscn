@@ -1,0 +1,142 @@
+[gd_scene load_steps=14 format=3 uid="uid://cg7iatu6a5ykm"]
+
+[ext_resource type="Texture2D" uid="uid://co1dtlc5mkbhd" path="res://assets/battle_spritesheet.png" id="1_26nm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3us"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(0, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8r3q"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(772, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8s3l"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(1544, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoi8l"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(3088, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooro2"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(2316, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyyyi"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(3860, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1otg"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(4632, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ogj"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(5404, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1p4"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(6176, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1puvy"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(6948, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk1n8"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(7720, 0, 772, 807)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w868c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3us")
+}],
+"loop": true,
+"name": &"cat1_behind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8r3q")
+}],
+"loop": true,
+"name": &"cat1_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8s3l")
+}],
+"loop": true,
+"name": &"cat1_sus",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoi8l")
+}],
+"loop": true,
+"name": &"dog_bad_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooro2")
+}],
+"loop": true,
+"name": &"dog_bad_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyyyi")
+}],
+"loop": true,
+"name": &"dog_behind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1otg")
+}],
+"loop": true,
+"name": &"dog_good_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3ogj")
+}],
+"loop": true,
+"name": &"dog_good_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr1p4")
+}],
+"loop": true,
+"name": &"dog_neutral_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1puvy")
+}],
+"loop": true,
+"name": &"dog_neutral_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk1n8")
+}],
+"loop": true,
+"name": &"dog_pregame",
+"speed": 5.0
+}]
+
+[node name="Character" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_w868c")
+animation = &"cat1_behind"
