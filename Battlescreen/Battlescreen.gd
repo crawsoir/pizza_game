@@ -6,6 +6,7 @@ var current_state = states.DOG_TURN
 @onready var dog = $Dog
 @onready var cat = $Cat
 @onready var animation_player = $AnimationPlayer
+@onready var dog_talk_timer = $DogTalkTimer
 
 @export var cat_name = "cat1"
 @export var dog_name = "dog"
@@ -32,28 +33,39 @@ var anim_map = {
 
 func _ready():
 	cat.animation = anim_map[CAT_BEHIND]
-	dog.animation = anim_map[DOG_PREGAME]
+	dog.animation = anim_map[DOG_NEUTRAL_CLOSED]
 	animation_player.play("dog_turn")
 
 func _process(delta):
+	# temp code
 	if Input.is_action_pressed("a_key"):
-		print(current_state)
 		if current_state == states.DOG_TURN:
 			switch_to_cat()
-		else:
+		elif current_state == states.CAT_TURN:
 			switch_to_dog()
 			
-
-func start_battle():
-	pass
+	if Input.is_action_just_pressed("d_key"):
+		if current_state == states.DOG_TURN:
+			activate_dog_talk()
+		
+			
+func activate_dog_talk():
+	var previous_anim = dog.animation
+	dog.animation = anim_map[DOG_NEUTRAL_OPEN]
+	if dog_talk_timer.is_stopped():
+		dog_talk_timer.start()
+		await dog_talk_timer.timeout
+	dog.animation = previous_anim
 
 func switch_to_cat():
+	current_state = states.TRANSITION_CAT
+	dog.animation = anim_map[DOG_PREGAME]
 	animation_player.play("transition_to_cat")
 	
 func switch_to_dog():
+	current_state = states.TRANSITION_DOG
 	animation_player.play("transition_to_dog")
-	
-	
+
 # functions called by the animation player	
 func switch_to_cat_animation_trigger():
 	cat.animation = anim_map[CAT_FRONT]
@@ -62,8 +74,8 @@ func switch_to_cat_animation_trigger():
 func switch_to_dog_animation_trigger():
 	cat.animation = anim_map[CAT_BEHIND]
 	dog.animation = anim_map[DOG_PREGAME]
-
-
+	
+	
 func _on_animation_player_animation_finished(anim_name):
 	match(anim_name):
 		"transition_to_cat":
@@ -71,4 +83,5 @@ func _on_animation_player_animation_finished(anim_name):
 			current_state = states.CAT_TURN
 		"transition_to_dog":
 			animation_player.play("dog_turn")
+			dog.animation = anim_map[DOG_NEUTRAL_CLOSED]
 			current_state = states.DOG_TURN
