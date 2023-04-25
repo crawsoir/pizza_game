@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkbha3styav2x"]
+[gd_scene load_steps=9 format=3 uid="uid://dgh4l1gffvlkb"]
 
-[ext_resource type="Script" path="res://Battlescreen/AnimationController.gd" id="1_hiw6i"]
-[ext_resource type="PackedScene" uid="uid://cg7iatu6a5ykm" path="res://Battlescreen/Character.tscn" id="2_tob2o"]
+[ext_resource type="Script" path="res://Battlescreen/AnimationManager.gd" id="1_mpxay"]
+[ext_resource type="PackedScene" uid="uid://cg7iatu6a5ykm" path="res://Battlescreen/Character.tscn" id="2_mgwds"]
 
 [sub_resource type="Animation" id="Animation_avnib"]
 length = 0.001
@@ -381,15 +381,15 @@ _data = {
 "transition_to_dog": SubResource("Animation_wobsp")
 }
 
-[node name="AnimationController" type="Node2D"]
-script = ExtResource("1_hiw6i")
+[node name="AnimationManager" type="Node2D"]
+script = ExtResource("1_mpxay")
 
-[node name="Dog" parent="." instance=ExtResource("2_tob2o")]
+[node name="Dog" parent="." instance=ExtResource("2_mgwds")]
 position = Vector2(220, 374)
 scale = Vector2(0.7, 0.7)
 animation = &"dog_pregame"
 
-[node name="Cat" parent="." instance=ExtResource("2_tob2o")]
+[node name="Cat" parent="." instance=ExtResource("2_mgwds")]
 position = Vector2(1090.12, 527.124)
 scale = Vector2(0.5, 0.5)
 animation = &"cat1_front"

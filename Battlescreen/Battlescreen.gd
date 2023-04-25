@@ -1,7 +1,7 @@
 extends Node2D
 class_name BattleScreen
 
-@onready var anim_controller = $AnimationController
+@onready var anim_manager = $AnimationManager
 @export var max_sus_score = 100
 
 var current_sus_score = 50
@@ -30,5 +30,5 @@ func _process(delta):
 			
 func update_state(state):
 	current_state = state
-	anim_controller.update_state(state)
+	anim_manager.update_state(state)
 		

@@ -1,5 +1,5 @@
 extends Node2D
-class_name AnimationController
+class_name AnimationManager
 
 @onready var battle_screen: BattleScreen = get_parent()
 
