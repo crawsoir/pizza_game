@@ -139,4 +139,4 @@ animations = [{
 
 [node name="Character" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_w868c")
-animation = &"dog_neutral_open"
+animation = &"dog_good_open"
