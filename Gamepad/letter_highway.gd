@@ -14,10 +14,14 @@ func _ready():
 func _process(delta):
 	pass
 
+func _input(event):
+	if (event.is_action_pressed(key_to_press)):
+		sendLetter()
+	
 func sendLetter():
 	var letterToSend = Letter.new()
+	letterToSend.global_position = $Sprite2D.global_position
 	add_child(letterToSend)
 
 func _on_letter_letter_highway_pressed(amount):
 	emit_signal("changeSusAmount", amount)
-	sendLetter()

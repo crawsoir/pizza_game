@@ -51,5 +51,10 @@ score = 40
 shape = SubResource("RectangleShape2D_yldku")
 
 [node name="Letter" parent="." instance=ExtResource("3_423f1")]
-position = Vector2(0, 448)
-script = null
+position = Vector2(0, 440)
+
+[connection signal="body_entered" from="OutKeyPressArea" to="Letter" method="_on_out_key_press_area_body_entered"]
+[connection signal="body_entered" from="LateKeyPressArea" to="Letter" method="_on_late_key_press_area_body_entered"]
+[connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
+[connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
+[connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]

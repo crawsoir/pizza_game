@@ -1,3 +1,4 @@
+class_name Letter
 extends CharacterBody2D
 signal letterHighwayPressed
 
@@ -11,12 +12,10 @@ var endPoint = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready")
 	origin = self.position
 	endPoint = Vector2(self.position.x, self.position.y - 1000)
 
 func _physics_process(delta):
-	print("speed: ", highway.speed)
 	position = position.move_toward(endPoint, delta*highway.speed)
 
 func _input(event):
@@ -40,15 +39,15 @@ func _input(event):
 		emit_signal("letterHighwayPressed", score)
 		queue_free()
 			
-func _on_perfect_key_press_area_body_entered(_body: Letter):
+func _on_perfect_key_press_area_body_entered(_body):
 	state = LetterState.PERFECT
 
-func _on_out_key_press_area_body_entered(_body: Letter):
+func _on_out_key_press_area_body_entered(_body):
 	state = LetterState.OUT_OF_BOUNDS
 	emit_signal("letterHighwayPressed", -10)
 
-func _on_late_key_press_area_body_entered(_body: Letter):
+func _on_late_key_press_area_body_entered(_body):
 	state = LetterState.LATE
 
-func _on_early_key_press_area_body_entered(_body: Letter):
+func _on_early_key_press_area_body_entered(_body):
 	state = LetterState.EARLY
