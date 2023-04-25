@@ -11,10 +11,11 @@ var current_state = states.DOG_TURN
 @export var cat_name = "cat1"
 @export var dog_name = "dog"
 
+var dog_status = "neutral"
+
 # general animations
 enum {
-	CAT_BEHIND, CAT_FRONT, CAT_SUS, DOG_PREGAME, DOG_NEUTRAL_CLOSED, DOG_NEUTRAL_OPEN, 
-	DOG_GOOD_CLOSED, DOG_GOOD_OPEN, DOG_BAD_CLOSED, DOG_BAD_OPEN, DOG_BEHIND
+	CAT_BEHIND, CAT_FRONT, CAT_SUS, DOG_PREGAME, DOG_CLOSED, DOG_OPEN, DOG_BEHIND
 }
 
 var anim_map = {
@@ -22,23 +23,19 @@ var anim_map = {
 	CAT_FRONT: cat_name + "_front",
 	CAT_SUS: cat_name + "_sus",
 	DOG_PREGAME: dog_name + "_pregame",
-	DOG_NEUTRAL_CLOSED: dog_name + "_neutral_closed",
-	DOG_NEUTRAL_OPEN: dog_name + "_neutral_open",
-	DOG_GOOD_CLOSED: dog_name + "_good_closed",
-	DOG_GOOD_OPEN: dog_name + "_good_open",
-	DOG_BAD_CLOSED: dog_name + "bad_closed",
-	DOG_BAD_OPEN: dog_name + "_bad_open",
+	DOG_CLOSED: dog_name + "_" + dog_status + "_closed",
+	DOG_OPEN: dog_name + "_" + dog_status + "_open",
 	DOG_BEHIND: dog_name + "_behind",
 }
 
 func _ready():
 	cat.animation = anim_map[CAT_BEHIND]
-	dog.animation = anim_map[DOG_NEUTRAL_CLOSED]
+	dog.animation = anim_map[DOG_CLOSED]
 	animation_player.play("dog_turn")
 
 func _process(delta):
-	# temp code
-	if Input.is_action_pressed("a_key"):
+	# ALL TEMP CODE
+	if Input.is_action_just_pressed("a_key"):
 		if current_state == states.DOG_TURN:
 			switch_to_cat()
 		elif current_state == states.CAT_TURN:
@@ -47,11 +44,37 @@ func _process(delta):
 	if Input.is_action_just_pressed("d_key"):
 		if current_state == states.DOG_TURN:
 			activate_dog_talk()
-		
+	
+	if Input.is_action_just_pressed("z_key"):
+		if current_state == states.DOG_TURN:
+			dog_status = "bad"
+			rebuild_anim_dict()
 			
+	if Input.is_action_just_pressed("x_key"):
+		if current_state == states.DOG_TURN:
+			dog_status = "good"
+			rebuild_anim_dict()
+			
+	if Input.is_action_just_pressed("c_key"):
+		if current_state == states.DOG_TURN:
+			dog_status = "neutral"
+			rebuild_anim_dict()
+	
+func rebuild_anim_dict():
+	anim_map = {
+		CAT_BEHIND: cat_name + "_behind",
+		CAT_FRONT: cat_name + "_front",
+		CAT_SUS: cat_name + "_sus",
+		DOG_PREGAME: dog_name + "_pregame",
+		DOG_CLOSED: dog_name + "_" + dog_status + "_closed",
+		DOG_OPEN: dog_name + "_" + dog_status + "_open",
+		DOG_BEHIND: dog_name + "_behind",
+	}
+	dog.animation = anim_map[DOG_CLOSED]
+
 func activate_dog_talk():
 	var previous_anim = dog.animation
-	dog.animation = anim_map[DOG_NEUTRAL_OPEN]
+	dog.animation = anim_map[DOG_OPEN]
 	if dog_talk_timer.is_stopped():
 		dog_talk_timer.start()
 		await dog_talk_timer.timeout
@@ -83,5 +106,5 @@ func _on_animation_player_animation_finished(anim_name):
 			current_state = states.CAT_TURN
 		"transition_to_dog":
 			animation_player.play("dog_turn")
-			dog.animation = anim_map[DOG_NEUTRAL_CLOSED]
+			dog.animation = anim_map[DOG_CLOSED]
 			current_state = states.DOG_TURN
