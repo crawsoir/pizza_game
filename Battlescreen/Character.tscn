@@ -34,13 +34,13 @@ region = Rect2(4632, 0, 772, 807)
 atlas = ExtResource("1_26nm1")
 region = Rect2(5404, 0, 772, 807)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ng7o1"]
-atlas = ExtResource("1_26nm1")
-region = Rect2(6948, 0, 772, 807)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4g3ek"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns6po"]
 atlas = ExtResource("1_26nm1")
 region = Rect2(6176, 0, 772, 807)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tut3v"]
+atlas = ExtResource("1_26nm1")
+region = Rect2(6948, 0, 772, 807)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk1n8"]
 atlas = ExtResource("1_26nm1")
@@ -114,7 +114,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ng7o1")
+"texture": SubResource("AtlasTexture_ns6po")
 }],
 "loop": true,
 "name": &"dog_neutral_closed",
@@ -122,7 +122,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4g3ek")
+"texture": SubResource("AtlasTexture_tut3v")
 }],
 "loop": true,
 "name": &"dog_neutral_open",
@@ -139,4 +139,4 @@ animations = [{
 
 [node name="Character" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_w868c")
-animation = &"dog_good_open"
+animation = &"dog_neutral_open"
