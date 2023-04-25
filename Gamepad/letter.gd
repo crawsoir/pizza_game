@@ -19,6 +19,7 @@ func _physics_process(delta):
 	position = position.move_toward(endPoint, delta*highway.speed)
 
 func _input(event):
+	print("something")
 	if (event.is_action_pressed(highway.key_to_press)):
 		var score = 0
 		match(state):
