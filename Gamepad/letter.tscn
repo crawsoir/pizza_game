@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0o8dy0vfh5wr"]
+[gd_scene load_steps=4 format=3 uid="uid://c0o8dy0vfh5wr"]
 
+[ext_resource type="Script" path="res://Gamepad/letter.gd" id="1_1e5wi"]
 [ext_resource type="Texture2D" uid="uid://mnwuc2mk83cn" path="res://icon.svg" id="2_kbh4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
 size = Vector2(48.9998, 49.0002)
 
 [node name="Letter" type="CharacterBody2D"]
-position = Vector2(0, 672)
+script = ExtResource("1_1e5wi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.0885313, 0.146557)

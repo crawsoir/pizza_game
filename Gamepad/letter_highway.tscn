@@ -1,15 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://biag51tci0d3v"]
+[gd_scene load_steps=5 format=3 uid="uid://biag51tci0d3v"]
 
-[ext_resource type="Script" path="res://Gamepad/Letter.gd" id="1_1cm4d"]
 [ext_resource type="Script" path="res://Gamepad/letter_highway.gd" id="1_ngcs6"]
 [ext_resource type="Script" path="res://Gamepad/KeyPressArea.gd" id="1_tdf2o"]
-[ext_resource type="Texture2D" uid="uid://mnwuc2mk83cn" path="res://icon.svg" id="2_8o5y4"]
+[ext_resource type="PackedScene" uid="uid://c0o8dy0vfh5wr" path="res://Gamepad/letter.tscn" id="3_423f1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yldku"]
 size = Vector2(48, 56)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
-size = Vector2(48.9998, 49.0002)
 
 [node name="LetterHighway" type="Node2D"]
 script = ExtResource("1_ngcs6")
@@ -54,21 +50,6 @@ score = 40
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyKeyPressArea"]
 shape = SubResource("RectangleShape2D_yldku")
 
-[node name="Letter" type="CharacterBody2D" parent="."]
-position = Vector2(0, 320)
-script = ExtResource("1_1cm4d")
-
-[node name="Sprite2D" type="Sprite2D" parent="Letter"]
-position = Vector2(0.0885313, 0.146557)
-scale = Vector2(0.379862, 0.380734)
-texture = ExtResource("2_8o5y4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Letter"]
-shape = SubResource("RectangleShape2D_rhswe")
-
-[connection signal="body_entered" from="OutKeyPressArea" to="Letter" method="_on_out_key_press_area_body_entered"]
-[connection signal="body_entered" from="LateKeyPressArea" to="Letter" method="_on_late_key_press_area_body_entered"]
-[connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
-[connection signal="body_exited" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_exited"]
-[connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
-[connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]
+[node name="Letter" parent="." instance=ExtResource("3_423f1")]
+position = Vector2(0, 448)
+script = null

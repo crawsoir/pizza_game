@@ -5,8 +5,6 @@ signal changeSusAmount
 @export var speed = 100
 @export var letter = "m"
 @export var key_to_press = "space"
-const Letter = preload("res://Gamepad/letter.tscn")
-@onready var keyPressArea: Sprite2D = get_node("Sprite2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,15 +14,10 @@ func _ready():
 func _process(delta):
 	pass
 
-func get_speed():
-	return speed
-	
-func get_letter():
-	return letter
-	
-func get_key_to_press():
-	return key_to_press
-
+func sendLetter():
+	var letterToSend = Letter.new()
+	add_child(letterToSend)
 
 func _on_letter_letter_highway_pressed(amount):
 	emit_signal("changeSusAmount", amount)
+	sendLetter()
