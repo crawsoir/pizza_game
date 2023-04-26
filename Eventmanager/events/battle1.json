@@ -21,8 +21,13 @@
 		{"name": "dog", "text": "sus"}
 	  ]
 	}
-  ]
+  ],
+  "win_dialogue": [
+	{"text": "ok u pass"},
+	{"name": "dog", "text": "yay"}
+  ],
+  "lose_dialogue": [
+	{"text": "too sussy!!@"},
+	{"name": "dog", "text": "sad woof"}
+  ],
 }
-
-
-
