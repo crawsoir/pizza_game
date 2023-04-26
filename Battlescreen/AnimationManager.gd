@@ -1,7 +1,7 @@
 extends Node2D
 class_name AnimationManager
 
-@onready var battle_screen: BattleScreen = get_parent()
+@onready var battle_screen = get_parent()
 
 @onready var dog = $Dog
 @onready var cat = $Cat
@@ -35,47 +35,39 @@ func _ready():
 	dog.animation = anim_map[DOG_PREGAME]
 	animation_player.play("dog_turn")
 
-func _process(delta):
-	# ALL TEMP CODE TO SHOW OFF ANIMATIONS
-	if current_state == battle_screen.states.DOG_TURN:
-		if Input.is_action_just_pressed("a_key"):
-			switch_to_cat()
-				
-		if Input.is_action_just_pressed("d_key"):
-			activate_dog_talk()
-		
-		if Input.is_action_just_pressed("z_key"):
-			update_dog_emotion_status("bad")
-				
-		if Input.is_action_just_pressed("x_key"):
-			update_dog_emotion_status("neutral")
-				
-		if Input.is_action_just_pressed("c_key"):
-			update_dog_emotion_status("good")
-			
-	elif current_state == battle_screen.states.CAT_TURN:
-		if Input.is_action_just_pressed("a_key"):
-			switch_to_dog()
-			
-	elif current_state == battle_screen.states.PREBATTLE:
-		if Input.is_action_just_pressed("d_key"):
-			dog.animation = anim_map[DOG_CLOSED]
-			battle_screen.update_state(battle_screen.states.DOG_TURN)
-
 # called by parent. dont call directly in this class
 # update state by calling the parent method
 func update_state(state):
-	if current_state == battle_screen.states.PREBATTLE:
-		dog.animation = anim_map[DOG_CLOSED]
+	match(state):
+		battle_screen.states.PREBATTLE:
+			dog.animation = anim_map[DOG_CLOSED]
+			
+		battle_screen.states.DOG_TURN:
+			if current_state == battle_screen.states.CAT_TURN:
+				switch_to_dog()
+				
+		battle_screen.states.CAT_TURN:
+			if current_state == battle_screen.states.DOG_TURN:
+				switch_to_cat()
+				
+		battle_screen.states.TRANSITION_DOG:
+			animation_player.play("transition_to_dog")
+			
+		battle_screen.states.TRANSITION_CAT:
+			animation_player.play("transition_to_cat")
+			dog.animation = anim_map[DOG_PREGAME]
+			
+		_:
+			pass
 	
 	current_state = state
 	
 func update_dog_emotion_status(status):
 	dog_emotion_status = status
-	rebuild_anim_dict()
+	_rebuild_anim_dict()
 
 # mainly used after updating dog status
-func rebuild_anim_dict():
+func _rebuild_anim_dict():
 	anim_map = {
 		CAT_BEHIND: cat_name + "_behind",
 		CAT_FRONT: cat_name + "_front",
@@ -96,20 +88,17 @@ func activate_dog_talk():
 	dog.animation = previous_anim
 
 func switch_to_cat():
-	current_state = battle_screen.states.TRANSITION_CAT
-	dog.animation = anim_map[DOG_PREGAME]
-	animation_player.play("transition_to_cat")
+	battle_screen.update_state(battle_screen.states.TRANSITION_CAT)
 	
 func switch_to_dog():
-	current_state = battle_screen.states.TRANSITION_DOG
-	animation_player.play("transition_to_dog")
+	battle_screen.update_state(battle_screen.states.TRANSITION_DOG)
 
 # functions called by the animation player	
-func switch_to_cat_animation_trigger():
+func _switch_to_cat_animation_trigger():
 	cat.animation = anim_map[CAT_FRONT]
 	dog.animation = anim_map[DOG_BEHIND]
 	
-func switch_to_dog_animation_trigger():
+func _switch_to_dog_animation_trigger():
 	cat.animation = anim_map[CAT_BEHIND]
 	dog.animation = anim_map[DOG_PREGAME]
 	

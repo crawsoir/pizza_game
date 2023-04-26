@@ -1,0 +1,33 @@
+{
+  "metadata": {
+	"track_speed": 10,
+	"cat_number": 1,
+	"cat_name": "who knows"
+  },
+  "events": [
+	{
+	  "num": 0,
+	  "type": "battle",
+	  "word_list": [
+		{"word": "meow", "score": 5},
+		{"word": "woof", "score": -5}
+	]
+	},
+	{
+	  "num": 1,
+	  "type": "dialogue",
+	  "dialogue": [
+		{"text": "so i hear u are a cat"},
+		{"name": "dog", "text": "sus"}
+	  ]
+	}
+  ],
+  "win_dialogue": [
+	{"text": "ok u pass"},
+	{"name": "dog", "text": "yay"}
+  ],
+  "lose_dialogue": [
+	{"text": "too sussy!!@"},
+	{"name": "dog", "text": "sad woof"}
+  ],
+}

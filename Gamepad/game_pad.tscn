@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://djujc4ihhsif0"]
+[gd_scene load_steps=7 format=3 uid="uid://djujc4ihhsif0"]
 
+[ext_resource type="Script" path="res://Gamepad/GamePad.gd" id="1_7raq8"]
 [ext_resource type="PackedScene" uid="uid://biag51tci0d3v" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
 [ext_resource type="Script" path="res://Gamepad/sus_meter.gd" id="2_f7cem"]
 
@@ -12,6 +13,7 @@ bg_color = Color(0.899059, 0.435421, 0.466352, 1)
 bg_color = Color(0.145038, 0.702115, 0.509318, 1)
 
 [node name="GamePad" type="Node2D"]
+script = ExtResource("1_7raq8")
 
 [node name="LetterHighway" parent="." instance=ExtResource("1_tgj43")]
 position = Vector2(24, 104)

@@ -283,7 +283,7 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"switch_to_cat_animation_trigger"
+"method": &"_switch_to_cat_animation_trigger"
 }]
 }
 
@@ -368,7 +368,7 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"switch_to_dog_animation_trigger"
+"method": &"_switch_to_dog_animation_trigger"
 }]
 }
 
