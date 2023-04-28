@@ -7,8 +7,6 @@ class_name BattleScreen
 @onready var game_pad = $GamePad
 @onready var prebattle_timer = $PrebattleTimer
 
-@onready var live_dialogue = $LiveDialogueBox
-
 #would be nice to refactor this into a class object, so we dont have to manually reset it
 @onready var interactive_dialogue = $InteractiveDialogueBox
 

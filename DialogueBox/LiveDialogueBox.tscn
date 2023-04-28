@@ -38,4 +38,5 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/normal_font_size = 29
 bbcode_enabled = true
+text = "dsfg"
 scroll_following = true
