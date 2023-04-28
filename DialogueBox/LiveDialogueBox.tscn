@@ -19,7 +19,6 @@ shadow_size = 3
 
 [node name="LiveDialogueBox" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.792157)
-anchors_preset = -1
 offset_right = 407.0
 offset_bottom = 139.0
 grow_horizontal = 2

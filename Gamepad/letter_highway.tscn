@@ -4,35 +4,57 @@
 [ext_resource type="Script" path="res://Gamepad/KeyPressArea.gd" id="1_tdf2o"]
 [ext_resource type="PackedScene" uid="uid://c0o8dy0vfh5wr" path="res://Gamepad/letter.tscn" id="3_423f1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_un0gg"]
-size = Vector2(64, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yldku"]
+size = Vector2(48, 56)
 
 [node name="LetterHighway" type="Node2D"]
 script = ExtResource("1_ngcs6")
-speed = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Sprite2D"]
-anchors_preset = -1
-anchor_left = -8.0
-anchor_top = -8.0
-anchor_right = 8.0
-anchor_bottom = 8.0
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0
 offset_bottom = 24.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="OutKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -104)
 script = ExtResource("1_tdf2o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_un0gg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="LateKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
+script = ExtResource("1_tdf2o")
+score = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LateKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="PerfectKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("1_tdf2o")
+score = 60
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
+
+[node name="EarlyKeyPressArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
+script = ExtResource("1_tdf2o")
+score = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyKeyPressArea"]
+shape = SubResource("RectangleShape2D_yldku")
 
 [node name="Letter" parent="." instance=ExtResource("3_423f1")]
-position = Vector2(0, 132)
+position = Vector2(0, 440)
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="OutKeyPressArea" to="Letter" method="_on_out_key_press_area_body_entered"]
+[connection signal="body_entered" from="LateKeyPressArea" to="Letter" method="_on_late_key_press_area_body_entered"]
+[connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
+[connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
 [connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]

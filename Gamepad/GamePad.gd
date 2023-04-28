@@ -25,4 +25,5 @@ func is_game_complete() -> bool:
 	return false
 	
 func get_sus_score() -> float:
-	return sus_score - 0.01
+	sus_score -= 0.01
+	return sus_score

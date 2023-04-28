@@ -17,6 +17,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cnmqh")
 
+[node name="PrebattleTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [node name="BgColour" parent="." instance=ExtResource("2_m21c5")]
 layout_mode = 1
 
@@ -32,7 +37,6 @@ json_path = "res://Eventmanager/events/battle1.json"
 [node name="LiveDialogueBox" parent="." instance=ExtResource("6_jf8eq")]
 visible = false
 layout_mode = 0
-anchors_preset = 0
 offset_left = 470.0
 offset_top = 468.0
 offset_right = 877.0

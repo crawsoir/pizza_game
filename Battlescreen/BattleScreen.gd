@@ -5,8 +5,10 @@ class_name BattleScreen
 @onready var anim_manager = $AnimationManager
 @onready var event_manager = $EventManager
 @onready var game_pad = $GamePad
+@onready var prebattle_timer = $PrebattleTimer
 
 @onready var live_dialogue = $LiveDialogueBox
+#would be nice to refactor this into a class object, so we dont have to manually reset it
 @onready var interactive_dialogue = $InteractiveDialogueBox
 
 var sus_score = 0.5
@@ -22,8 +24,8 @@ func _ready():
 func _process(delta):
 	match(current_state):
 		states.PREBATTLE:
-			await get_tree().create_timer(2).timeout
-			process_event()
+			if prebattle_timer.is_stopped():
+				process_event()
 				
 		states.DOG_TURN:
 			# Update sus animations
@@ -44,6 +46,7 @@ func _process(delta):
 
 		states.CAT_TURN:
 			if interactive_dialogue.dialogue_finished:
+				interactive_dialogue.clear()
 				interactive_dialogue.visible = false
 				event_manager.next_event()
 				process_event()
@@ -56,18 +59,20 @@ func _process(delta):
 			pass
 		states.WON:
 			pass
+			
 		_:
 			print("Unknown state: " + str(current_state))
 
 func process_event():
 	if event_manager.battle_finished:
+		interactive_dialogue.visible = true
+		interactive_dialogue.set_dialogue(event_manager.get_win_dialogue())
 		update_state(states.WON)
 	elif event_manager.event_is_battle():
 		update_state(states.DOG_TURN)
 		game_pad.start_game(event_manager, sus_score)
 	elif event_manager.event_is_dialogue():
 		update_state(states.CAT_TURN)
-		
 		interactive_dialogue.visible = true
 		interactive_dialogue.set_dialogue(event_manager.get_dialogue())
 

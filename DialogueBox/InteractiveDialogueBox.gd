@@ -20,6 +20,13 @@ func _process(delta):
 		else:    
 			$Text.visible_characters = len($Text.text)
 
+# better to make this a new object instead of having to do this, but ah well
+func clear():
+	dialogue = null
+	phrase_num = 0
+	phrase_finished = false
+	dialogue_finished = false
+
 func set_dialogue(dialogue_param):
 	dialogue = dialogue_param
 	_next_phrase()
@@ -46,6 +53,8 @@ func _next_phrase():
 		
 	while $Text.visible_characters < len($Text.text):
 		$Text.visible_characters += 1
+		timer.start()
+		await timer.timeout
 		
 	phrase_finished = true
 	phrase_num += 1
