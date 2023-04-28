@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Gamepad/letter_highway.gd" id="1_ngcs6"]
 [ext_resource type="Script" path="res://Gamepad/KeyPressArea.gd" id="1_tdf2o"]
-[ext_resource type="PackedScene" uid="uid://c0o8dy0vfh5wr" path="res://Gamepad/letter.tscn" id="3_423f1"]
+
+[sub_resource type="Theme" id="Theme_ngh3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yldku"]
 size = Vector2(48, 56)
@@ -12,12 +13,12 @@ script = ExtResource("1_ngcs6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-metadata/_edit_use_anchors_ = true
+[node name="Panel" type="Panel" parent="Sprite2D"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme = SubResource("Theme_ngh3w")
 
 [node name="OutKeyPressArea" type="Area2D" parent="."]
 position = Vector2(0, -104)
@@ -50,6 +51,7 @@ score = 40
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyKeyPressArea"]
 shape = SubResource("RectangleShape2D_yldku")
 
+<<<<<<< HEAD
 [node name="Letter" parent="." instance=ExtResource("3_423f1")]
 position = Vector2(0, 440)
 
@@ -58,3 +60,6 @@ position = Vector2(0, 440)
 [connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
 [connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
 [connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]
+=======
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+>>>>>>> added randomized sent letters

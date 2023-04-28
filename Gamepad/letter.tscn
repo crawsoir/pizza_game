@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0o8dy0vfh5wr"]
+[gd_scene load_steps=3 format=3 uid="uid://c0o8dy0vfh5wr"]
 
 [ext_resource type="Script" path="res://Gamepad/letter.gd" id="1_1e5wi"]
-[ext_resource type="Texture2D" uid="uid://mnwuc2mk83cn" path="res://icon.svg" id="2_kbh4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
 size = Vector2(48.9998, 49.0002)
@@ -9,10 +8,30 @@ size = Vector2(48.9998, 49.0002)
 [node name="Letter" type="CharacterBody2D"]
 script = ExtResource("1_1e5wi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.0885313, 0.146557)
-scale = Vector2(0.379862, 0.380734)
-texture = ExtResource("2_kbh4v")
+[node name="Display" type="Panel" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 24.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rhswe")

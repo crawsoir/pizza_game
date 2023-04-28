@@ -10,10 +10,6 @@ var bodies = []
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _input(event):
 	if (event.is_action_pressed(highway.key_to_press) and len(bodies) > 0 and bodies[0] != null):
@@ -21,8 +17,7 @@ func _input(event):
 		var dist = position.y - letter.position.y
 		bodies.remove_at(0)
 		letter.queue_free()
-		print(dist)
-		highway.add_score(dist)
+		highway.add_score(dist, letter.value)
 
 
 func _on_body_entered(body):

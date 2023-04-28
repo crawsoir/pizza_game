@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://djujc4ihhsif0"]
+[gd_scene load_steps=8 format=3 uid="uid://djujc4ihhsif0"]
 
 [ext_resource type="Script" path="res://Gamepad/GamePad.gd" id="1_7raq8"]
 [ext_resource type="PackedScene" uid="uid://biag51tci0d3v" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
 [ext_resource type="Script" path="res://Gamepad/sus_meter.gd" id="2_f7cem"]
+[ext_resource type="Script" path="res://Gamepad/GamePlayManager.gd" id="2_k8b1n"]
 
 [sub_resource type="Theme" id="Theme_ujehj"]
 
@@ -14,11 +15,27 @@ bg_color = Color(0.145038, 0.702115, 0.509318, 1)
 
 [node name="GamePad" type="Node2D"]
 script = ExtResource("1_7raq8")
+speed = 200
+max_time = 2
+
+[node name="GamePlayManager" type="Node" parent="."]
+script = ExtResource("2_k8b1n")
 
 [node name="LetterHighway" parent="." instance=ExtResource("1_tgj43")]
 position = Vector2(24, 104)
-speed = 50
 key_to_press = "d_key"
+
+[node name="LetterHighway2" parent="." instance=ExtResource("1_tgj43")]
+position = Vector2(104, 104)
+key_to_press = "f_key"
+
+[node name="LetterHighway3" parent="." instance=ExtResource("1_tgj43")]
+position = Vector2(184, 104)
+key_to_press = "j_key"
+
+[node name="LetterHighway4" parent="." instance=ExtResource("1_tgj43")]
+position = Vector2(264, 104)
+key_to_press = "k_key"
 
 [node name="SusMeter" type="ProgressBar" parent="."]
 offset_right = 384.0
@@ -29,4 +46,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_a1c4w")
 value = 50.0
 script = ExtResource("2_f7cem")
 
-[connection signal="changeSusAmount" from="LetterHighway" to="SusMeter" method="_on_letter_highway_change_sus_amount"]
+[connection signal="wordCompleted" from="GamePlayManager" to="." method="_on_game_play_manager_word_completed"]
+[connection signal="wordCompleted" from="GamePlayManager" to="SusMeter" method="_on_game_play_manager_word_completed"]
+[connection signal="addLetter" from="LetterHighway" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway2" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway3" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway4" to="GamePlayManager" method="_on_letter_highway_add_letter"]
