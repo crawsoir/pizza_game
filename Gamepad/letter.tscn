@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Gamepad/letter.gd" id="1_1e5wi"]
 [ext_resource type="Texture2D" uid="uid://mnwuc2mk83cn" path="res://icon.svg" id="2_kbh4v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
-size = Vector2(48.9998, 49.0002)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmtde"]
+size = Vector2(50, 48)
 
 [node name="Letter" type="CharacterBody2D"]
 script = ExtResource("1_1e5wi")
@@ -14,5 +14,5 @@ position = Vector2(0.0885313, 0.146557)
 scale = Vector2(0.379862, 0.380734)
 texture = ExtResource("2_kbh4v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_rhswe")
+[node name="RealBody" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gmtde")
