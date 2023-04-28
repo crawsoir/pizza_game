@@ -20,7 +20,9 @@ func start_game(parent_event_manager, initial_sus_score):
 	sus_score = initial_sus_score
 
 func is_game_complete() -> bool:
+	if sus_score < 0.1:
+		return true
 	return false
 	
 func get_sus_score() -> float:
-	return sus_score
+	return sus_score - 0.01

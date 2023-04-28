@@ -1,9 +1,13 @@
-extends Node2D
+extends Control
 class_name BattleScreen
 
+@onready var bg_colour = $BgColour
 @onready var anim_manager = $AnimationManager
 @onready var event_manager = $EventManager
 @onready var game_pad = $GamePad
+
+@onready var live_dialogue = $LiveDialogueBox
+@onready var interactive_dialogue = $InteractiveDialogueBox
 
 var sus_score = 0.5
 var current_state = states.PREBATTLE
@@ -12,7 +16,8 @@ enum states { PREBATTLE, CAT_TURN, DOG_TURN, TRANSITION_DOG, TRANSITION_CAT, LOS
 
 
 func _ready():
-	pass
+	bg_colour.move_in()
+	interactive_dialogue.visible = false
 
 func _process(delta):
 	match(current_state):
@@ -38,14 +43,15 @@ func _process(delta):
 				process_event()
 
 		states.CAT_TURN:
-			pass
-			# call this when dialogue over
-			#event_manager.next_event()
-			#process_event()
+			if interactive_dialogue.dialogue_finished:
+				interactive_dialogue.visible = false
+				event_manager.next_event()
+				process_event()
+				
 		states.TRANSITION_DOG:
-			pass
+			bg_colour.move_in()
 		states.TRANSITION_CAT:
-			pass
+			bg_colour.move_out()
 		states.LOST:
 			pass
 		states.WON:
@@ -61,6 +67,9 @@ func process_event():
 		game_pad.start_game(event_manager, sus_score)
 	elif event_manager.event_is_dialogue():
 		update_state(states.CAT_TURN)
+		
+		interactive_dialogue.visible = true
+		interactive_dialogue.set_dialogue(event_manager.get_dialogue())
 
 func update_state(state):
 	current_state = state

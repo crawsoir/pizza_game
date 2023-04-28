@@ -1,12 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdthp4k3q0cgr"]
+[gd_scene load_steps=8 format=3 uid="uid://bjqbxvjaftpii"]
 
 [ext_resource type="Script" path="res://Battlescreen/BattleScreen.gd" id="1_cnmqh"]
+[ext_resource type="PackedScene" uid="uid://dmhltxxmje62r" path="res://Battlescreen/BgColour.tscn" id="2_m21c5"]
 [ext_resource type="PackedScene" uid="uid://djujc4ihhsif0" path="res://Gamepad/game_pad.tscn" id="2_p1j3l"]
 [ext_resource type="PackedScene" uid="uid://dgh4l1gffvlkb" path="res://Battlescreen/AnimationManager.tscn" id="3_a0wn2"]
 [ext_resource type="Script" path="res://Eventmanager/EventManager.gd" id="4_iu5y7"]
+[ext_resource type="PackedScene" uid="uid://drap8wjae25s1" path="res://DialogueBox/LiveDialogueBox.tscn" id="6_jf8eq"]
+[ext_resource type="PackedScene" uid="uid://bqgx2nxmfeqhi" path="res://DialogueBox/InteractiveDialogueBox.tscn" id="7_tgbch"]
 
-[node name="BattleScreen" type="Node2D"]
+[node name="BattleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cnmqh")
+
+[node name="BgColour" parent="." instance=ExtResource("2_m21c5")]
+layout_mode = 1
 
 [node name="GamePad" parent="." instance=ExtResource("2_p1j3l")]
 position = Vector2(619, 33)
@@ -16,3 +28,22 @@ position = Vector2(619, 33)
 [node name="EventManager" type="Node" parent="."]
 script = ExtResource("4_iu5y7")
 json_path = "res://Eventmanager/events/battle1.json"
+
+[node name="LiveDialogueBox" parent="." instance=ExtResource("6_jf8eq")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+offset_left = 470.0
+offset_top = 468.0
+offset_right = 877.0
+offset_bottom = 607.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="InteractiveDialogueBox" parent="." instance=ExtResource("7_tgbch")]
+visible = false
+layout_mode = 0
+offset_left = 75.0
+offset_top = 63.0
+offset_right = 600.0
+offset_bottom = 240.0
