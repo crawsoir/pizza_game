@@ -81,3 +81,6 @@ func update_state(state):
 
 func update_sus_score(score):
 	sus_score = score
+	
+func move_dog_mouth():
+	anim_manager.activate_dog_talk()
