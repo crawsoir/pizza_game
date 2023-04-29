@@ -40,6 +40,7 @@ func start_game(parent_event_manager, initial_sus_score):
 	dialog_box.clear()
 	for highway in highways:
 		highway.visible = true
+	dialog_box.show()
 
 func is_game_complete() -> bool:
 	return !game_ongoing
@@ -56,6 +57,7 @@ func stop_game():
 	for highway in highways:
 		highway.visible = false
 		highway.free_letters()
+	dialog_box.hide()
 	game_ongoing = false
 	
 func _on_game_play_manager_word_completed(_word: String):

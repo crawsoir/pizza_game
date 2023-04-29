@@ -73,6 +73,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = ExtResource("2_bo4jg")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 script = ExtResource("1_tdf2o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -89,6 +90,15 @@ one_shot = true
 
 [node name="Letters" type="Node2D" parent="."]
 position = Vector2(0, 640)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "W"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

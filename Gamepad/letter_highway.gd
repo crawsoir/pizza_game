@@ -6,6 +6,7 @@ signal addLetter
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
 @onready var letters: Node2D = $Letters
+@onready var labelNode: Label = $Label
 
 @export var key_to_press = "space"
 
@@ -16,6 +17,10 @@ var speed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = game_pad.speed
+	if (key_to_press == "space"):
+		labelNode.text = "_"
+	else:
+		labelNode.text = key_to_press.split("_")[0].to_lower()
 
 func _process(delta):
 	if (timer.is_stopped()):
