@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqgx2nxmfeqhi"]
+[gd_scene load_steps=4 format=3 uid="uid://bqgx2nxmfeqhi"]
 
 [ext_resource type="Script" path="res://DialogueBox/InteractiveDialogueBox.gd" id="1_7uvnj"]
+[ext_resource type="AudioStream" uid="uid://ckg0oly41nhim" path="res://assets/Fast_Single_v7_wav.wav" id="2_fk0i0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4rwl"]
 bg_color = Color(0.94902, 0.952941, 0.980392, 1)
@@ -52,3 +53,6 @@ text = "tyutyuty"
 scroll_following = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fk0i0")

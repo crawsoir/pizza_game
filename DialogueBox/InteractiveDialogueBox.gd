@@ -53,6 +53,9 @@ func _next_phrase():
 		
 	while $Text.visible_characters < len($Text.text):
 		$Text.visible_characters += 1
+		if not $AudioStreamPlayer.stream == null:
+			$AudioStreamPlayer.playing = true
+			$AudioStreamPlayer.volume_db = randf_range(-20,-15)
 		timer.start()
 		await timer.timeout
 		

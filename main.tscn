@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct6qa41n4r3es"]
+[gd_scene load_steps=3 format=3 uid="uid://ct6qa41n4r3es"]
 
-[ext_resource type="PackedScene" uid="uid://bjqbxvjaftpii" path="res://Battlescreen/Battlescreen.tscn" id="1_4tpc7"]
+[ext_resource type="PackedScene" uid="uid://bjqbxvjaftpii" path="res://Battlescreen/BattleScreen.tscn" id="1_4tpc7"]
+[ext_resource type="AudioStream" uid="uid://pj1744ldehei" path="res://assets/pitzah.mp3" id="2_o704q"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="BattleScreen" parent="." instance=ExtResource("1_4tpc7")]
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o704q")
+volume_db = -10.0
+autoplay = true
