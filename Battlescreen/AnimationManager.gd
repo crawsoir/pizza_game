@@ -45,6 +45,8 @@ func update_state(state):
 		battle_screen.states.DOG_TURN:
 			if current_state == battle_screen.states.CAT_TURN:
 				switch_to_dog()
+			else:
+				dog.animation = anim_map[DOG_CLOSED]
 				
 		battle_screen.states.CAT_TURN:
 			if current_state == battle_screen.states.DOG_TURN:
