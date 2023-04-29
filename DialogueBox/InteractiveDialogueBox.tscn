@@ -19,20 +19,20 @@ shadow_color = Color(1, 0.607843, 0.54902, 1)
 shadow_size = 3
 
 [node name="InteractiveDialogueBox" type="Panel"]
-offset_right = 525.0
+offset_right = 459.0
 offset_bottom = 177.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e4rwl")
 script = ExtResource("1_7uvnj")
 
 [node name="Name" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 17.0
-offset_top = -36.0
-offset_right = 204.0
-offset_bottom = -1.0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 199.0
+offset_bottom = 40.0
 theme_override_colors/default_color = Color(0.94902, 0.952941, 0.980392, 1)
-theme_override_colors/font_outline_color = Color(0.886275, 0.247059, 0.152941, 1)
-theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(1, 0.607843, 0.54902, 1)
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 25
 text = "Cat"
 fit_content = true
@@ -41,8 +41,8 @@ scroll_active = false
 [node name="Text" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 11.0
-offset_right = 513.0
+offset_top = 36.0
+offset_right = 444.0
 offset_bottom = 167.0
 theme_override_colors/default_color = Color(1, 0.607843, 0.54902, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.803922, 0.341176, 1)
