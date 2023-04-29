@@ -17,7 +17,6 @@ bg_color = Color(0.145038, 0.702115, 0.509318, 1)
 [node name="GamePad" type="Node2D"]
 script = ExtResource("1_7raq8")
 speed = 200
-max_time = 2
 
 [node name="GamePlayManager" type="Node" parent="."]
 script = ExtResource("2_k8b1n")

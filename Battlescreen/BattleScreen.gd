@@ -30,7 +30,6 @@ func _process(delta):
 			# Update sus animations
 			sus_score = game_pad.get_sus_score()
 			if sus_score <= 0:
-				update_state(states.LOST)
 				anim_manager.update_dog_emotion_status("bad")
 			elif sus_score <= 30:
 				anim_manager.update_dog_emotion_status("bad")
@@ -50,26 +49,31 @@ func _process(delta):
 				event_manager.next_event()
 				process_event()
 				
+				
 		states.TRANSITION_DOG:
 			bg_colour.move_in()
 		states.TRANSITION_CAT:
 			bg_colour.move_out()
 		states.LOST:
-			pass
+			if interactive_dialogue.dialogue_finished:
+				interactive_dialogue.clear()
+				interactive_dialogue.visible = false
 		states.WON:
-			pass
+			if interactive_dialogue.dialogue_finished:
+				interactive_dialogue.clear()
+				interactive_dialogue.visible = false
 			
 		_:
 			print("Unknown state: " + str(current_state))
 	
 func process_event():
 	if event_manager.battle_finished:
-		interactive_dialogue.visible = true
-		update_state(states.WON if game_pad.get_sus_score() >= 50 else states.LOST)		
-		if current_state == states.WON:
-			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue())
-		elif current_state == states.LOST:
-			interactive_dialogue.set_dialogue(event_manager.get_lose_dialogue())
+		if (current_state == states.CAT_TURN):
+			update_state(states.WON)
+			interactive_dialogue.visible = true
+			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue() if game_pad.get_sus_score() >= 50 else event_manager.get_lose_dialogue())
+		else:
+			update_state(states.CAT_TURN)
 	elif event_manager.event_is_battle():
 		update_state(states.DOG_TURN)
 		game_pad.start_game(event_manager, sus_score)

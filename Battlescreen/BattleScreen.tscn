@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Battlescreen/BattleScreen.gd" id="1_cnmqh"]
 [ext_resource type="PackedScene" uid="uid://dmhltxxmje62r" path="res://Battlescreen/BgColour.tscn" id="2_m21c5"]
 [ext_resource type="PackedScene" uid="uid://djujc4ihhsif0" path="res://Gamepad/game_pad.tscn" id="2_p1j3l"]
-[ext_resource type="PackedScene" path="res://Battlescreen/AnimationManager.tscn" id="3_a0wn2"]
+[ext_resource type="PackedScene" uid="uid://dgh4l1gffvlkb" path="res://Battlescreen/AnimationManager.tscn" id="3_a0wn2"]
 [ext_resource type="Script" path="res://Eventmanager/EventManager.gd" id="4_iu5y7"]
 [ext_resource type="PackedScene" uid="uid://bqgx2nxmfeqhi" path="res://DialogueBox/InteractiveDialogueBox.tscn" id="7_tgbch"]
 
@@ -28,6 +28,7 @@ layout_mode = 1
 
 [node name="GamePad" parent="." instance=ExtResource("2_p1j3l")]
 position = Vector2(619, 33)
+min_time = 0.3
 
 [node name="EventManager" type="Node" parent="."]
 script = ExtResource("4_iu5y7")

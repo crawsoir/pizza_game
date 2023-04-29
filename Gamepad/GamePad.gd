@@ -8,8 +8,8 @@ signal inputFromGamepad
 @onready var dialog_box: LiveDialogBox = $LiveDialogueBox
 
 @export var speed = 100
-@export var min_time = 0.5
-@export var max_time = 1
+@export var min_time: float = 0.5
+@export var max_time: float = 1
 
 var event_manager: EventManager
 var letters = []
@@ -25,7 +25,6 @@ func _process(delta):
 		timer -= delta
 		if timer < 0:
 			highways[randi() % highways.size()].send_letter(game_play_manager.generate_new_letter())
-			print(min_time, max_time)
 			timer = randf_range(min_time, max_time)
 
 # notes for bean -> 
@@ -56,6 +55,7 @@ func _on_game_play_manager_word_completed(_word: String):
 	dialog_box.clear()
 	for highway in highways:
 		highway.visible = false
+		highway.free_letters()
 	game_ongoing = false
 
 

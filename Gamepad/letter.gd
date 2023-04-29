@@ -1,7 +1,7 @@
 class_name Letter
 extends CharacterBody2D
 
-@onready var highway: Highway = get_parent()
+@onready var highway: Highway = get_parent().get_parent()
 @onready var label: Label = $Display/Label
 
 var value = "m"
