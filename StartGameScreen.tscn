@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqjbo5km8hb6h"]
+
+[ext_resource type="Texture2D" uid="uid://cmblxuera45f4" path="res://assets/howtoplay.png" id="1_813rd"]
+[ext_resource type="Texture2D" uid="uid://psgo6htpyixx" path="res://assets/dog.png" id="1_kvjvf"]
+[ext_resource type="Script" path="res://StartGameScreen.gd" id="1_yrbqx"]
+[ext_resource type="Texture2D" uid="uid://dtsrtoma01km3" path="res://assets/cat.png" id="2_lmxdx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obyvr"]
+bg_color = Color(0.976471, 0.960784, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8pbs"]
+bg_color = Color(1, 0.709804, 0.713726, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.913725, 0.254902, 0.372549, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erifd"]
+bg_color = Color(0.901961, 0.6, 0.6, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 0, 0, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d7h1"]
+skew = Vector2(0.1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wum4o"]
+
+[node name="StartGameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yrbqx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_obyvr")
+
+[node name="Dog" type="Sprite2D" parent="."]
+position = Vector2(665, 363)
+texture = ExtResource("1_kvjvf")
+
+[node name="Cat" type="Sprite2D" parent="."]
+position = Vector2(160, 479)
+texture = ExtResource("2_lmxdx")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 520.0
+offset_right = 366.0
+offset_bottom = 602.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_colors/font_hover_color = Color(1, 0.854902, 0.854902, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8pbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_erifd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4d7h1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wum4o")
+text = "START!!"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 385.0
+offset_top = 553.0
+offset_right = 501.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_colors/font_hover_color = Color(1, 0.854902, 0.854902, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8pbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_erifd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4d7h1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wum4o")
+text = "QUIT
+"
+
+[node name="Howtoplay" type="Sprite2D" parent="."]
+position = Vector2(837, 323)
+texture = ExtResource("1_813rd")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

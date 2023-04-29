@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm625agb8x5cb"]
+
+[ext_resource type="Texture2D" uid="uid://ckvgd14mij4nu" path="res://assets/dogcry.png" id="1_5236h"]
+[ext_resource type="Script" path="res://GameOverScreen.gd" id="1_kdxk1"]
+[ext_resource type="Texture2D" uid="uid://cjsyqi0f1ckgk" path="res://assets/cat2.png" id="2_octqt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxg1g"]
+bg_color = Color(0.976471, 0.929412, 0.941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m83ty"]
+bg_color = Color(1, 0.709804, 0.713726, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.913725, 0.254902, 0.372549, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pitq"]
+bg_color = Color(0.901961, 0.6, 0.6, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(1, 0, 0, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l58su"]
+skew = Vector2(0.1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o33de"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdxk1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxg1g")
+
+[node name="MainMenu" type="Button" parent="."]
+offset_left = 705.0
+offset_top = 494.0
+offset_right = 915.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_colors/font_hover_color = Color(1, 0.854902, 0.854902, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_m83ty")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5pitq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l58su")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o33de")
+text = "MAIN MENU"
+
+[node name="Cat2" type="Sprite2D" parent="."]
+position = Vector2(149, 269)
+texture = ExtResource("2_octqt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 59.0
+offset_right = 1023.0
+offset_bottom = 196.0
+theme_override_colors/default_color = Color(1, 0.345098, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0.533333, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 100
+text = "GAME OVER"
+
+[node name="Dogcry" type="Sprite2D" parent="."]
+position = Vector2(272, 486)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_5236h")
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

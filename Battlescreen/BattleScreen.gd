@@ -55,7 +55,7 @@ func _process(delta):
 		states.TRANSITION_CAT:
 			bg_colour.move_out()
 		states.LOST:
-			pass
+			Global.goto_scene(Global.GAME_OVER_SCREEN)
 		states.WON:
 			pass
 			
