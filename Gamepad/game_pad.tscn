@@ -21,6 +21,8 @@ max_time = 2
 
 [node name="GamePlayManager" type="Node" parent="."]
 script = ExtResource("2_k8b1n")
+late_score = -10
+very_late_score = -15
 
 [node name="LetterHighway" parent="." instance=ExtResource("1_tgj43")]
 position = Vector2(24, 104)
@@ -39,7 +41,7 @@ position = Vector2(264, 104)
 key_to_press = "k_key"
 
 [node name="SusMeter" type="ProgressBar" parent="."]
-offset_right = 384.0
+offset_right = 288.0
 offset_bottom = 27.0
 theme = SubResource("Theme_ujehj")
 theme_override_styles/background = SubResource("StyleBoxFlat_msdag")

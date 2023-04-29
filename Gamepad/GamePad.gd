@@ -38,6 +38,9 @@ func start_game(parent_event_manager, initial_sus_score):
 	game_ongoing = true
 	game_play_manager.start_new_round(event_manager.get_battle_word_list())
 	sus_meter.value = initial_sus_score
+	dialog_box.clear()
+	for highway in highways:
+		highway.visible = true
 
 func is_game_complete() -> bool:
 	return !game_ongoing
@@ -45,7 +48,7 @@ func is_game_complete() -> bool:
 func get_sus_score() -> float:
 	return sus_meter.value
 
-func click():
+func click() :
 	if game_ongoing:
 		emit_signal("inputFromGamepad")
 	

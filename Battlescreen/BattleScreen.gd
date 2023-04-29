@@ -32,11 +32,11 @@ func _process(delta):
 			if sus_score <= 0:
 				update_state(states.LOST)
 				anim_manager.update_dog_emotion_status("bad")
-			elif sus_score <= 0.3:
+			elif sus_score <= 30:
 				anim_manager.update_dog_emotion_status("bad")
-			elif sus_score <= 0.7:
+			elif sus_score <= 70:
 				anim_manager.update_dog_emotion_status("neutral")
-			elif sus_score <= 1:
+			elif sus_score <= 100:
 				anim_manager.update_dog_emotion_status("good")
 
 			if game_pad.is_game_complete():
@@ -65,8 +65,11 @@ func _process(delta):
 func process_event():
 	if event_manager.battle_finished:
 		interactive_dialogue.visible = true
-		interactive_dialogue.set_dialogue(event_manager.get_win_dialogue())
-		update_state(states.WON)
+		update_state(states.WON if game_pad.get_sus_score() >= 50 else states.LOST)		
+		if current_state == states.WON:
+			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue())
+		elif current_state == states.LOST:
+			interactive_dialogue.set_dialogue(event_manager.get_lose_dialogue())
 	elif event_manager.event_is_battle():
 		update_state(states.DOG_TURN)
 		game_pad.start_game(event_manager, sus_score)
