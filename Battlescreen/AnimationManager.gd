@@ -65,8 +65,9 @@ func update_state(state):
 	current_state = state
 	
 func update_dog_emotion_status(status):
-	dog_emotion_status = status
-	_rebuild_anim_dict()
+	if dog_emotion_status != status:
+		dog_emotion_status = status
+		_rebuild_anim_dict()
 
 # mainly used after updating dog status
 func _rebuild_anim_dict():
