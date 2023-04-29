@@ -24,10 +24,10 @@ autostart = true
 [node name="BgColour" parent="." instance=ExtResource("2_m21c5")]
 layout_mode = 1
 
+[node name="AnimationManager" parent="." instance=ExtResource("3_a0wn2")]
+
 [node name="GamePad" parent="." instance=ExtResource("2_p1j3l")]
 position = Vector2(619, 33)
-
-[node name="AnimationManager" parent="." instance=ExtResource("3_a0wn2")]
 
 [node name="EventManager" type="Node" parent="."]
 script = ExtResource("4_iu5y7")

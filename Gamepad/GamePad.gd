@@ -5,6 +5,7 @@ signal inputFromGamepad
 @onready var game_play_manager: GamePlayManager = $GamePlayManager
 @onready var highways = [$LetterHighway, $LetterHighway2, $LetterHighway3, $LetterHighway4]
 @onready var sus_meter = $SusMeter
+@onready var dialog_box: LiveDialogBox = $LiveDialogueBox
 
 @export var speed = 100
 @export var min_time = 0.5
@@ -17,13 +18,14 @@ var timer = 0
 var game_ongoing = false
 	
 func _ready():
-	pass
+	dialog_box.clear()
 
 func _process(delta):
 	if (game_ongoing):
 		timer -= delta
 		if timer < 0:
 			highways[randi() % highways.size()].send_letter(game_play_manager.generate_new_letter())
+			print(min_time, max_time)
 			timer = randf_range(min_time, max_time)
 
 # notes for bean -> 
@@ -47,7 +49,12 @@ func click():
 	if game_ongoing:
 		emit_signal("inputFromGamepad")
 	
-func _on_game_play_manager_word_completed(_word: String, _score: int):
+func _on_game_play_manager_word_completed(_word: String):
+	dialog_box.clear()
 	for highway in highways:
 		highway.visible = false
 	game_ongoing = false
+
+
+func on_letter_highway_add_letter(dist, letter):
+	dialog_box.add_text(letter)

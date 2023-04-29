@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct6qa41n4r3es"]
 
-[ext_resource type="PackedScene" uid="uid://djujc4ihhsif0" path="res://Gamepad/game_pad.tscn" id="1_34tep"]
+[ext_resource type="PackedScene" uid="uid://bjqbxvjaftpii" path="res://Battlescreen/Battlescreen.tscn" id="1_4tpc7"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GamePad" parent="." instance=ExtResource("1_34tep")]
-position = Vector2(16, 16)
+[node name="BattleScreen" parent="." instance=ExtResource("1_4tpc7")]
+offset_right = 1152.0
+offset_bottom = 648.0

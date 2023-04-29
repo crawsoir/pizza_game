@@ -9,9 +9,9 @@ signal addLetter
 @export var key_to_press = "space"
 
 @onready var letter_scene = preload("res://Gamepad/letter.tscn")
-@onready var word = ""
 
 var speed
+var letters = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +30,8 @@ func clicked():
 	timer.start()
 		
 func send_letter(letter):
-	print(letter)
 	var letter_to_send = letter_scene.instantiate()
 	letter_to_send.value = letter
 	letter_to_send.position = Vector2(0, 1000)
+	letters.append(letter_to_send)
 	add_child(letter_to_send)

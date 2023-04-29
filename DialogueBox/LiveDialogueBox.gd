@@ -1,3 +1,4 @@
+class_name LiveDialogBox
 extends Panel
 
 @onready var text = $RichTextLabel

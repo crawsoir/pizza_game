@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://djujc4ihhsif0"]
+[gd_scene load_steps=9 format=3 uid="uid://djujc4ihhsif0"]
 
 [ext_resource type="Script" path="res://Gamepad/GamePad.gd" id="1_7raq8"]
 [ext_resource type="PackedScene" uid="uid://cd2d61tu0reoo" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
 [ext_resource type="Script" path="res://Gamepad/sus_meter.gd" id="2_f7cem"]
 [ext_resource type="Script" path="res://Gamepad/GamePlayManager.gd" id="2_k8b1n"]
+[ext_resource type="PackedScene" uid="uid://drap8wjae25s1" path="res://DialogueBox/LiveDialogueBox.tscn" id="5_dpacc"]
 
 [sub_resource type="Theme" id="Theme_ujehj"]
 
@@ -46,9 +47,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_a1c4w")
 value = 50.0
 script = ExtResource("2_f7cem")
 
+[node name="LiveDialogueBox" parent="." instance=ExtResource("5_dpacc")]
+offset_left = -536.0
+offset_top = 368.0
+offset_right = -129.0
+offset_bottom = 507.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="updateScore" from="GamePlayManager" to="SusMeter" method="_on_game_play_manager_word_completed"]
+[connection signal="wordAssessment" from="GamePlayManager" to="LiveDialogueBox" method="add_text"]
 [connection signal="wordCompleted" from="GamePlayManager" to="." method="_on_game_play_manager_word_completed"]
-[connection signal="wordCompleted" from="GamePlayManager" to="SusMeter" method="_on_game_play_manager_word_completed"]
+[connection signal="addLetter" from="LetterHighway" to="." method="on_letter_highway_add_letter"]
 [connection signal="addLetter" from="LetterHighway" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway2" to="." method="on_letter_highway_add_letter"]
 [connection signal="addLetter" from="LetterHighway2" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway3" to="." method="on_letter_highway_add_letter"]
 [connection signal="addLetter" from="LetterHighway3" to="GamePlayManager" method="_on_letter_highway_add_letter"]
+[connection signal="addLetter" from="LetterHighway4" to="." method="on_letter_highway_add_letter"]
 [connection signal="addLetter" from="LetterHighway4" to="GamePlayManager" method="_on_letter_highway_add_letter"]
