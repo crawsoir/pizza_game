@@ -8,9 +8,9 @@
 	{
 	  "num": 0,
 	  "type": "battle",
+	  "win_word": "meow",
 	  "word_list": [
 		{"word": "meow", "score": 15},
-		{"word": "woof", "score": -15}
 	]
 	},
 	{
@@ -20,23 +20,7 @@
 		{"text": "so i hear u are a cat"},
 		{"name": "dog", "text": "sus"}
 	  ]
-	},
-	{
-	  "num": 2,
-	  "type": "battle",
-	  "word_list": [
-		{"word": "meow", "score": 15},
-		{"word": "woof", "score": -15}
-	]
-	},
-	{
-	  "num": 3,
-	  "type": "dialogue",
-	  "dialogue": [
-		{"text": "mhmm"},
-		{"name": "dog", "text": "I'm not a sussy baka"}
-	  ]
-	},
+	}
   ],
   "win_dialogue": [
 	{"text": "ok u pass"},

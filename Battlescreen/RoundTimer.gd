@@ -19,4 +19,4 @@ func start():
 	timer.start()
 
 func stop():
-	value = 0
+	timer.stop()

@@ -65,7 +65,7 @@ texture_progress = SubResource("GradientTexture2D_uogc7")
 script = ExtResource("7_xwc88")
 
 [node name="Timer" type="Timer" parent="RoundTimer"]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="RoundTimer"]
@@ -75,6 +75,15 @@ offset_top = -1.0
 offset_right = 305.0
 offset_bottom = 21.0
 color = Color(0.709804, 0.709804, 0.709804, 0.137255)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RoundTimer"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = -2.0
+offset_right = 305.0
+offset_bottom = 21.0
+text = "Time Left"
+autowrap_mode = 0
 
 [connection signal="inputFromGamepad" from="GamePad" to="." method="move_dog_mouth"]
 [connection signal="roundTimerOver" from="RoundTimer" to="." method="round_timer_over"]

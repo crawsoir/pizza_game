@@ -56,7 +56,10 @@ func _process(delta):
 		states.TRANSITION_CAT:
 			bg_colour.move_out()
 		states.LOST:
-			Global.goto_scene(Global.GAME_OVER_SCREEN)
+			if interactive_dialogue.dialogue_finished:
+				interactive_dialogue.clear()
+				interactive_dialogue.visible = false
+				Global.goto_scene(Global.GAME_OVER_SCREEN)
 		states.WON:
 			if interactive_dialogue.dialogue_finished:
 				interactive_dialogue.clear()
@@ -80,6 +83,7 @@ func process_event():
 		round_timer.visible = true
 	elif event_manager.event_is_dialogue():
 		update_state(states.CAT_TURN)
+		round_timer.stop()
 		interactive_dialogue.visible = true
 		interactive_dialogue.set_dialogue(event_manager.get_dialogue())
 
