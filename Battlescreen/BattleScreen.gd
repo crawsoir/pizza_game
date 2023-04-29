@@ -68,9 +68,9 @@ func _process(delta):
 func process_event():
 	if event_manager.battle_finished:
 		if (current_state == states.CAT_TURN):
-			update_state(states.WON)
+			update_state(states.WON if game_pad.get_sus_score() >= 50 and round_timer.value > 0 else states.LOST)
 			interactive_dialogue.visible = true
-			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue() if game_pad.get_sus_score() >= 50 else event_manager.get_lose_dialogue())
+			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue() if game_pad.get_sus_score() >= 50 and round_timer.value > 0 else event_manager.get_lose_dialogue())
 		else:
 			update_state(states.CAT_TURN)
 	elif event_manager.event_is_battle():
