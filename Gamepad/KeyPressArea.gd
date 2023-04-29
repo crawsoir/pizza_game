@@ -16,7 +16,7 @@ func _input(event):
 		highway.clicked()
 		if (len(bodies) > 0):
 			var letter: Letter = bodies[-1]
-			var dist = position.y - letter.position.y
+			var dist = global_position.y - letter.global_position.y
 			bodies.pop_back()
 			letter.queue_free()
 			highway.add_score(dist, letter.value)

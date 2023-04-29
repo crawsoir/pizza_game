@@ -5,13 +5,13 @@ signal addLetter
 @onready var game_pad: GamePad = get_parent()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var letters: Node2D = $Letters
 
 @export var key_to_press = "space"
 
 @onready var letter_scene = preload("res://Gamepad/letter.tscn")
 
 var speed
-var letters = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +32,15 @@ func clicked():
 func send_letter(letter):
 	var letter_to_send = letter_scene.instantiate()
 	letter_to_send.value = letter
-	letter_to_send.position = Vector2(0, 1000)
-	letters.append(letter_to_send)
-	add_child(letter_to_send)
+	letters.add_child(letter_to_send)
+
+func free_letters():
+	var orig_position = letters.position
+	letters.queue_free()
+	letters = Node2D.new()
+	letters.position = orig_position
+	add_child(letters)
+	
+func _world_boundary(body):
+	print(body.position)
+	body.queue_free()
