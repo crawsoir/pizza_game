@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	$AnimationPlayer.play("default")
+
 func _on_quit_pressed():
 	get_tree().quit()
 

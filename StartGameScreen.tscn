@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqjbo5km8hb6h"]
+[gd_scene load_steps=13 format=3 uid="uid://bqjbo5km8hb6h"]
 
 [ext_resource type="Texture2D" uid="uid://cmblxuera45f4" path="res://assets/howtoplay.png" id="1_813rd"]
 [ext_resource type="Texture2D" uid="uid://psgo6htpyixx" path="res://assets/dog.png" id="1_kvjvf"]
@@ -32,6 +32,68 @@ shadow_size = 5
 skew = Vector2(0.1, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wum4o"]
+
+[sub_resource type="Animation" id="Animation_ccxrj"]
+resource_name = "default"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(665, 363), Vector2(665, 375), Vector2(665, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(160, 485), Vector2(160, 479), Vector2(160, 485)]
+}
+
+[sub_resource type="Animation" id="Animation_tfy6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(665, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 479)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwntt"]
+_data = {
+"RESET": SubResource("Animation_tfy6a"),
+"default": SubResource("Animation_ccxrj")
+}
 
 [node name="StartGameScreen" type="Control"]
 layout_mode = 3
@@ -94,6 +156,11 @@ text = "QUIT
 [node name="Howtoplay" type="Sprite2D" parent="."]
 position = Vector2(837, 323)
 texture = ExtResource("1_813rd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwntt")
+}
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
