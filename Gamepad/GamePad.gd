@@ -51,12 +51,15 @@ func click() :
 	if game_ongoing:
 		emit_signal("inputFromGamepad")
 	
-func _on_game_play_manager_word_completed(_word: String):
+func stop_game():
 	dialog_box.clear()
 	for highway in highways:
 		highway.visible = false
 		highway.free_letters()
 	game_ongoing = false
+	
+func _on_game_play_manager_word_completed(_word: String):
+	stop_game()
 
 
 func on_letter_highway_add_letter(dist, letter):

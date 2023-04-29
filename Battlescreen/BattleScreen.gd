@@ -6,6 +6,7 @@ class_name BattleScreen
 @onready var event_manager = $EventManager
 @onready var game_pad = $GamePad
 @onready var prebattle_timer = $PrebattleTimer
+@onready var round_timer = $RoundTimer
 
 #would be nice to refactor this into a class object, so we dont have to manually reset it
 @onready var interactive_dialogue = $InteractiveDialogueBox
@@ -75,11 +76,17 @@ func process_event():
 	elif event_manager.event_is_battle():
 		update_state(states.DOG_TURN)
 		game_pad.start_game(event_manager, sus_score)
+		round_timer.start()
+		round_timer.visible = true
 	elif event_manager.event_is_dialogue():
 		update_state(states.CAT_TURN)
 		interactive_dialogue.visible = true
 		interactive_dialogue.set_dialogue(event_manager.get_dialogue())
 
+func round_timer_over():
+	game_pad.stop_game()
+	round_timer.visible = false
+	
 func update_state(state):
 	current_state = state
 	anim_manager.update_state(state)

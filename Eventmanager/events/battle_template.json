@@ -8,6 +8,7 @@
 	{
 	  "num": 0,
 	  "type": "battle",
+	  "win_word": "meow",
 	  "word_list": [
 		{"word": "meow", "score": 5},
 		{"word": "woof", "score": -5}
