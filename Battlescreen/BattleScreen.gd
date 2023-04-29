@@ -64,6 +64,7 @@ func _process(delta):
 			if interactive_dialogue.dialogue_finished:
 				interactive_dialogue.clear()
 				interactive_dialogue.visible = false
+				Global.goto_scene(Global.VICTORY_SCREEN)
 			
 		_:
 			print("Unknown state: " + str(current_state))

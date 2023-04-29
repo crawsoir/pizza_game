@@ -33,6 +33,33 @@ skew = Vector2(0.1, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wum4o"]
 
+[sub_resource type="Animation" id="Animation_tfy6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(665, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 479)]
+}
+
 [sub_resource type="Animation" id="Animation_ccxrj"]
 resource_name = "default"
 length = 5.0
@@ -60,33 +87,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(160, 485), Vector2(160, 479), Vector2(160, 485)]
-}
-
-[sub_resource type="Animation" id="Animation_tfy6a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dog:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(665, 363)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cat:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(160, 479)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dwntt"]
@@ -138,6 +138,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_wum4o")
 text = "START!!"
 
 [node name="Quit" type="Button" parent="."]
+layout_mode = 0
 offset_left = 385.0
 offset_top = 553.0
 offset_right = 501.0

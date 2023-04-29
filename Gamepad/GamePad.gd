@@ -27,10 +27,7 @@ func _process(delta):
 			highways[randi() % highways.size()].send_letter(game_play_manager.generate_new_letter())
 			timer = randf_range(min_time, max_time)
 
-# notes for bean -> 
-# start_game() - disable and hide the gamepad before and after the games complete
-# start_game() - the event manager holds its own state of which event its on, just call its get methods
-# is_game_complete() - parent handles win condition, this is whether all letters are sent and done 
+
 func start_game(parent_event_manager, initial_sus_score):
 	# objects are pass by ref! (some types aren't)
 	event_manager = parent_event_manager
@@ -40,7 +37,6 @@ func start_game(parent_event_manager, initial_sus_score):
 	dialog_box.clear()
 	for highway in highways:
 		highway.visible = true
-	dialog_box.show()
 
 func is_game_complete() -> bool:
 	return !game_ongoing
@@ -57,7 +53,6 @@ func stop_game():
 	for highway in highways:
 		highway.visible = false
 		highway.free_letters()
-	dialog_box.hide()
 	game_ongoing = false
 	
 func _on_game_play_manager_word_completed(_word: String):

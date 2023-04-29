@@ -3,6 +3,7 @@ extends Node
 var BATTLE_SCREEN = "res://Battlescreen/BattleScreen.tscn"
 var START_SCREEN = "res://StartGameScreen.tscn"
 var GAME_OVER_SCREEN = "res://GameOverScreen.tscn"
+var VICTORY_SCREEN = "res://VictoryScreen.tscn"
 
 var current_scene = null
 
