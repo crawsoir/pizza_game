@@ -20,7 +20,7 @@ func start_new_round(word_list):
 	createdWord = ""
 	for word in word_list:
 		word_bank[word["word"]] = word["score"]
-		letters.append(word["word"].split())
+		letters = letters + Array(word["word"].split())
 	
 func generate_new_letter():
 	if (letters.size() == 0):

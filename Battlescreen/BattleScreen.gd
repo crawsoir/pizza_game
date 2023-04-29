@@ -10,7 +10,7 @@ class_name BattleScreen
 #would be nice to refactor this into a class object, so we dont have to manually reset it
 @onready var interactive_dialogue = $InteractiveDialogueBox
 
-var sus_score = 0.5
+var sus_score = 50
 var current_state = states.PREBATTLE
 
 enum states { PREBATTLE, CAT_TURN, DOG_TURN, TRANSITION_DOG, TRANSITION_CAT, LOST, WON }
@@ -61,7 +61,7 @@ func _process(delta):
 			
 		_:
 			print("Unknown state: " + str(current_state))
-
+	
 func process_event():
 	if event_manager.battle_finished:
 		interactive_dialogue.visible = true

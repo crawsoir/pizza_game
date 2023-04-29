@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://djujc4ihhsif0"]
 
 [ext_resource type="Script" path="res://Gamepad/GamePad.gd" id="1_7raq8"]
-[ext_resource type="PackedScene" uid="uid://biag51tci0d3v" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
+[ext_resource type="PackedScene" uid="uid://cd2d61tu0reoo" path="res://Gamepad/letter_highway.tscn" id="1_tgj43"]
 [ext_resource type="Script" path="res://Gamepad/sus_meter.gd" id="2_f7cem"]
 [ext_resource type="Script" path="res://Gamepad/GamePlayManager.gd" id="2_k8b1n"]
 

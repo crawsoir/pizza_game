@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Gamepad/letter.gd" id="1_1e5wi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhswe"]
-size = Vector2(48.9998, 49.0002)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmtde"]
+size = Vector2(50, 48)
 
 [node name="Letter" type="CharacterBody2D"]
 script = ExtResource("1_1e5wi")
@@ -33,5 +33,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_rhswe")
+[node name="RealBody" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gmtde")

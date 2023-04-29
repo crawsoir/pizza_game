@@ -1,12 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://biag51tci0d3v"]
+[gd_scene load_steps=10 format=3 uid="uid://cd2d61tu0reoo"]
 
 [ext_resource type="Script" path="res://Gamepad/letter_highway.gd" id="1_ngcs6"]
 [ext_resource type="Script" path="res://Gamepad/KeyPressArea.gd" id="1_tdf2o"]
+[ext_resource type="StyleBox" uid="uid://djiikadwg0pkx" path="res://Gamepad/styles/unClickedStyle.tres" id="2_bo4jg"]
+[ext_resource type="StyleBox" uid="uid://bv5xuuqv4tdil" path="res://Gamepad/styles/clickedStyle.tres" id="4_g0han"]
 
-[sub_resource type="Theme" id="Theme_ngh3w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un0gg"]
+size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yldku"]
-size = Vector2(48, 56)
+[sub_resource type="Animation" id="Animation_pnlbw"]
+resource_name = "click"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Panel:theme_override_styles/panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_g0han")]
+}
+
+[sub_resource type="Animation" id="Animation_0seij"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Panel:theme_override_styles/panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bo4jg")]
+}
+
+[sub_resource type="Animation" id="Animation_6pkdb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Panel:theme_override_styles/panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bo4jg")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkmke"]
+_data = {
+"RESET": SubResource("Animation_6pkdb"),
+"click": SubResource("Animation_pnlbw"),
+"default": SubResource("Animation_0seij")
+}
 
 [node name="LetterHighway" type="Node2D"]
 script = ExtResource("1_ngcs6")
@@ -18,48 +70,22 @@ offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
-theme = SubResource("Theme_ngh3w")
+theme_override_styles/panel = ExtResource("2_bo4jg")
 
-[node name="OutKeyPressArea" type="Area2D" parent="."]
-position = Vector2(0, -104)
+[node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_tdf2o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutKeyPressArea"]
-shape = SubResource("RectangleShape2D_yldku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_un0gg")
 
-[node name="LateKeyPressArea" type="Area2D" parent="."]
-position = Vector2(0, -64)
-script = ExtResource("1_tdf2o")
-score = 30
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qkmke")
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LateKeyPressArea"]
-shape = SubResource("RectangleShape2D_yldku")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
-[node name="PerfectKeyPressArea" type="Area2D" parent="."]
-position = Vector2(0, -48)
-script = ExtResource("1_tdf2o")
-score = 60
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectKeyPressArea"]
-shape = SubResource("RectangleShape2D_yldku")
-
-[node name="EarlyKeyPressArea" type="Area2D" parent="."]
-position = Vector2(0, -32)
-script = ExtResource("1_tdf2o")
-score = 40
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyKeyPressArea"]
-shape = SubResource("RectangleShape2D_yldku")
-
-<<<<<<< HEAD
-[node name="Letter" parent="." instance=ExtResource("3_423f1")]
-position = Vector2(0, 440)
-
-[connection signal="body_entered" from="OutKeyPressArea" to="Letter" method="_on_out_key_press_area_body_entered"]
-[connection signal="body_entered" from="LateKeyPressArea" to="Letter" method="_on_late_key_press_area_body_entered"]
-[connection signal="body_entered" from="PerfectKeyPressArea" to="Letter" method="_on_perfect_key_press_area_body_entered"]
-[connection signal="body_entered" from="EarlyKeyPressArea" to="Letter" method="_on_early_key_press_area_body_entered"]
-[connection signal="letterHighwayPressed" from="Letter" to="." method="_on_letter_letter_highway_pressed"]
-=======
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
->>>>>>> added randomized sent letters
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

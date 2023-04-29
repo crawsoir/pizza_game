@@ -16,3 +16,5 @@ func _ready():
 
 func _physics_process(delta):
 	position = position.move_toward(endPoint, delta*highway.speed)
+	if (global_position.y < 0):
+		queue_free()

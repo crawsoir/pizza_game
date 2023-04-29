@@ -1,5 +1,6 @@
 class_name GamePad
 extends Node2D
+signal inputFromGamepad
 
 @onready var game_play_manager: GamePlayManager = $GamePlayManager
 @onready var highways = [$LetterHighway, $LetterHighway2, $LetterHighway3, $LetterHighway4]
@@ -13,18 +14,17 @@ var event_manager: EventManager
 var letters = []
 
 var timer = 0
-var game_ongoing = true
-
+var game_ongoing = false
+	
 func _ready():
 	pass
 
 func _process(delta):
-	if (!game_ongoing):
-		return
-	timer -= delta
-	if timer < 0:
-		highways[randi() % highways.size()].send_letter(game_play_manager.generate_new_letter())
-		timer = randf_range(min_time, max_time)
+	if (game_ongoing):
+		timer -= delta
+		if timer < 0:
+			highways[randi() % highways.size()].send_letter(game_play_manager.generate_new_letter())
+			timer = randf_range(min_time, max_time)
 
 # notes for bean -> 
 # start_game() - disable and hide the gamepad before and after the games complete
@@ -33,15 +33,21 @@ func _process(delta):
 func start_game(parent_event_manager, initial_sus_score):
 	# objects are pass by ref! (some types aren't)
 	event_manager = parent_event_manager
-	game_ongoing = false
+	game_ongoing = true
 	game_play_manager.start_new_round(event_manager.get_battle_word_list())
 	sus_meter.value = initial_sus_score
 
 func is_game_complete() -> bool:
-	return game_ongoing
+	return !game_ongoing
 	
 func get_sus_score() -> float:
 	return sus_meter.value
 
+func click():
+	if game_ongoing:
+		emit_signal("inputFromGamepad")
+	
 func _on_game_play_manager_word_completed(_word: String, _score: int):
-	game_ongoing = true
+	for highway in highways:
+		highway.visible = false
+	game_ongoing = false
