@@ -51,13 +51,14 @@ func update_state(state):
 		battle_screen.states.CAT_TURN:
 			if current_state == battle_screen.states.DOG_TURN or current_state == battle_screen.states.PREBATTLE:
 				switch_to_cat()
-				
+			
 		battle_screen.states.TRANSITION_DOG:
 			animation_player.play("transition_to_dog")
 			
-		battle_screen.states.TRANSITION_CAT:
-			animation_player.play("transition_to_cat")
-			dog.animation = anim_map[DOG_PREGAME]
+		battle_screen.states.TRANSITION_CAT, battle_screen.states.WON, battle_screen.states.LOST:
+			if current_state != battle_screen.states.CAT_TURN: 
+				animation_player.play("transition_to_cat")
+				dog.animation = anim_map[DOG_PREGAME]
 			
 		_:
 			pass
@@ -110,7 +111,8 @@ func _on_animation_player_animation_finished(anim_name):
 	match(anim_name):
 		"transition_to_cat":
 			animation_player.play("cat_turn")
-			battle_screen.update_state(battle_screen.states.CAT_TURN)
+			if battle_screen.current_state == battle_screen.states.TRANSITION_CAT:
+				battle_screen.update_state(battle_screen.states.CAT_TURN)
 		"transition_to_dog":
 			animation_player.play("dog_turn")
 			dog.animation = anim_map[DOG_CLOSED]

@@ -37,6 +37,7 @@ func start_game(parent_event_manager, initial_sus_score):
 	game_play_manager.start_new_round(event_manager.get_battle_word_list())
 	game_play_manager.score = initial_sus_score
 	dialog_box.clear()
+	dialog_box.show()
 	for highway in highways:
 		highway.visible = true
 
@@ -52,6 +53,7 @@ func click() :
 	
 func stop_game():
 	dialog_box.clear()
+	dialog_box.hide()
 	for highway in highways:
 		highway.visible = false
 		highway.free_letters()

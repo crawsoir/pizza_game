@@ -53,6 +53,6 @@ func _on_letter_highway_add_letter(dist: int, letter: String):
 		update_score(word_bank[created_word])
 	else:
 		emit_signal("wordCompleted", created_word)
-		update_score(-5)
+		update_score(-20)
 	created_word = ""
 	score_change = 0
