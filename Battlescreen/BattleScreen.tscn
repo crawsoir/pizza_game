@@ -44,10 +44,10 @@ json_path = "res://Eventmanager/events/battle1.json"
 
 [node name="InteractiveDialogueBox" parent="." instance=ExtResource("7_tgbch")]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 63.0
-offset_right = 548.0
-offset_bottom = 240.0
+offset_left = 110.0
+offset_top = 95.0
+offset_right = 583.0
+offset_bottom = 272.0
 
 [node name="RoundTimer" type="TextureProgressBar" parent="."]
 layout_mode = 0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnrt8nwyv8nny"]
+[gd_scene load_steps=14 format=3 uid="uid://cnrt8nwyv8nny"]
 
 [ext_resource type="Script" path="res://GUI/StartGameScreen.gd" id="1_kolfv"]
 [ext_resource type="Texture2D" uid="uid://psgo6htpyixx" path="res://assets/dog.png" id="2_oeak0"]
 [ext_resource type="Texture2D" uid="uid://dtsrtoma01km3" path="res://assets/cat.png" id="3_rlbnb"]
 [ext_resource type="Texture2D" uid="uid://cmblxuera45f4" path="res://assets/howtoplay.png" id="4_tijqq"]
+[ext_resource type="Texture2D" uid="uid://cg7r68mq610xg" path="res://assets/logo.png" id="5_2diwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obyvr"]
 bg_color = Color(0.976471, 0.960784, 0.929412, 1)
@@ -162,6 +163,11 @@ texture = ExtResource("4_tijqq")
 libraries = {
 "": SubResource("AnimationLibrary_dwntt")
 }
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(364.685, 85)
+scale = Vector2(0.921348, 0.921348)
+texture = ExtResource("5_2diwj")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

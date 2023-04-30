@@ -31,12 +31,10 @@ position = Vector2(264, 104)
 key_to_press = "k_key"
 
 [node name="LiveDialogueBox" parent="." instance=ExtResource("5_dpacc")]
-offset_left = -536.0
-offset_top = 368.0
-offset_right = -129.0
-offset_bottom = 507.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -176.0
+offset_top = 210.0
+offset_right = -35.0
+offset_bottom = 279.0
 
 [connection signal="wordCompleted" from="GamePlayManager" to="." method="_on_game_play_manager_word_completed"]
 [connection signal="addLetter" from="LetterHighway" to="." method="on_letter_highway_add_letter"]

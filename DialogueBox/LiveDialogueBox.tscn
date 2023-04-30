@@ -20,10 +20,8 @@ shadow_size = 3
 
 [node name="LiveDialogueBox" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.792157)
-offset_right = 407.0
-offset_bottom = 139.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_right = 274.0
+offset_bottom = 69.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sochi")
 script = ExtResource("1_k2cb6")
 
@@ -31,8 +29,8 @@ script = ExtResource("1_k2cb6")
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
-offset_right = 395.0
-offset_bottom = 130.0
+offset_right = 258.0
+offset_bottom = 58.0
 theme_override_colors/default_color = Color(1, 0.607843, 0.54902, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.803922, 0.341176, 1)
 theme_override_constants/shadow_offset_x = 1
