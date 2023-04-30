@@ -42,6 +42,10 @@ func get_battle_word_list():
 func get_dialogue():
 	assert(event_is_dialogue(), "Cannot fetch dialogue, Event is not type \"dialogue\"")
 	return event["dialogue"]
+
+func get_hint_dialogue():
+	assert(event_is_battle(), "Cannot fetch word list, Event is not type \"battle\"")
+	return event["hint"]
 	
 func get_win_dialogue():
 	return battle["win_dialogue"]

@@ -41,16 +41,17 @@ func _process(delta):
 				anim_manager.update_dog_emotion_status("good")
 
 			if game_pad.is_game_complete():
-				event_manager.next_event()
+				if (game_pad.get_result_is_real_word()):
+					event_manager.next_event()
 				process_event()
-
+				
 		states.CAT_TURN:
 			if interactive_dialogue.dialogue_finished:
 				interactive_dialogue.clear()
 				interactive_dialogue.visible = false
-				event_manager.next_event()
+				if (game_pad.get_result_is_real_word()):
+					event_manager.next_event()
 				process_event()
-				
 				
 		states.TRANSITION_DOG:
 			bg_colour.move_in()
@@ -73,16 +74,25 @@ func _process(delta):
 func process_event():
 	if event_manager.battle_finished:
 		if (current_state == states.CAT_TURN):
-			update_state(states.WON if game_pad.get_sus_score() >= 50 and round_timer.value > 0 else states.LOST)
+			update_state(states.WON if game_pad.get_sus_score() >= 50 else states.LOST)
 			interactive_dialogue.visible = true
-			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue() if game_pad.get_sus_score() >= 50 and round_timer.value > 0 else event_manager.get_lose_dialogue())
+			interactive_dialogue.set_dialogue(event_manager.get_win_dialogue() if game_pad.get_sus_score() >= 50 else event_manager.get_lose_dialogue())
 		else:
 			update_state(states.CAT_TURN)
 	elif event_manager.event_is_battle():
+		if game_pad.is_game_complete() and not game_pad.get_result_is_real_word() and not current_state == states.CAT_TURN:
+			update_state(states.CAT_TURN)
+			round_timer.stop()
+			game_pad.stop_game()
+			interactive_dialogue.visible = true
+			interactive_dialogue.set_dialogue(event_manager.get_hint_dialogue())
+			return
 		update_state(states.DOG_TURN)
 		game_pad.start_game(event_manager, sus_score)
 		round_timer.start()
 		round_timer.visible = true
+		interactive_dialogue.clear()
+		interactive_dialogue.visible = false
 	elif event_manager.event_is_dialogue():
 		update_state(states.CAT_TURN)
 		round_timer.stop()
