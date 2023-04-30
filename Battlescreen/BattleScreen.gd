@@ -111,4 +111,5 @@ func update_sus_score(score):
 	sus_score = score
 	
 func move_dog_mouth():
-	anim_manager.activate_dog_talk()
+	if current_state == states.DOG_TURN:
+		anim_manager.activate_dog_talk()
