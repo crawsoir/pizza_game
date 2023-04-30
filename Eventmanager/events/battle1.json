@@ -2,32 +2,70 @@
   "metadata": {
 	"track_speed": 10,
 	"cat_number": 1,
-	"cat_name": "who knows"
+	"cat_name": "Cat"
   },
   "events": [
-		{
-	  "num": 1,
+	{
 	  "type": "dialogue",
 	  "dialogue": [
-		{"text": "so i hear u are a cat"},
-		{"name": "dog", "text": "sus"}
+		{"text": "Hmm, I don't think I've seen you around here before."},
+		{"text": "Can you talk?"},
+		{"name": "Dog", "text": "(oh no)"},
+		{"name": "Dog", "text": "(what should i say to a cat?)"}
 	  ]
 	},
 	{
-	  "num": 1,
+	  "type": "battle",
+	  "hint": [
+		{"name": "Dog", "text": "(what do cats say?)"},
+	  ],
+	  "word_list": [
+		{"word": "meow", "score": 15}
+	  ]
+	},
+	{
 	  "type": "dialogue",
 	  "dialogue": [
-		{"text": "so i hear u are a cat"},
-		{"name": "dog", "text": "sus"}
+		{"text": "Meow indeed. I agree with you."},
+		{"text": "But what about the economy? How does that make you feel?"},
+		{"name": "Dog", "text": "(economy?!?)"},
 	  ]
-	}
+	},
+	{
+	  "type": "battle",
+	  "hint": [
+		{"name": "Dog", "text": "(how do i feel about the economy?)"},
+	  ],
+	  "word_list": [
+		{"word": "hiss", "score": 15}
+	  ]
+	},
+	{
+	  "type": "dialogue",
+	  "dialogue": [
+		{"text": "It's a cat-astrophe! I'm pawsitively enraged!"},
+		{"name": "Dog", "text": "*vigorously nodding*"},
+		{"text": "I'm glad you're understanding. We'd make fine furriends"},
+	  ]
+	},
+	{
+	  "type": "battle",
+	  "hint": [
+		{"name": "Dog", "text": "(how do i feel about making new friends?)"},
+	  ],
+	  "word_list": [
+		{"word": "purr", "score": 15}
+	  ]
+	},
   ],
   "win_dialogue": [
-	{"text": "ok u pass"},
-	{"name": "dog", "text": "yay"}
+	{"text": "See you around, new cat!"},
+	{"name": "Dog", "text": "(yay! one step closer!)"},
+	{"name": "note: ", "text": "There is only one cat for this demo so far. Stay tuned for more cats and a story!"}
   ],
   "lose_dialogue": [
-	{"text": "too sussy!!@"},
-	{"name": "dog", "text": "sad woof"}
+	{"text": "You're not a cat, are you?"},
+	{"text": "You're a dog!"},
+	{"name": "dog", "text": "(oh no, i've been caught!)"}
   ],
 }

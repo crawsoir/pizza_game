@@ -43,11 +43,10 @@ script = ExtResource("4_iu5y7")
 json_path = "res://Eventmanager/events/battle1.json"
 
 [node name="InteractiveDialogueBox" parent="." instance=ExtResource("7_tgbch")]
-visible = false
 layout_mode = 0
 offset_left = 75.0
 offset_top = 63.0
-offset_right = 600.0
+offset_right = 548.0
 offset_bottom = 240.0
 
 [node name="RoundTimer" type="TextureProgressBar" parent="."]

@@ -5,22 +5,24 @@
 	"cat_name": "who knows"
   },
   "events": [
-	{
-	  "num": 0,
-	  "type": "battle",
-	  "win_word": "meow",
-	  "word_list": [
-		{"word": "meow", "score": 5},
-		{"word": "woof", "score": -5}
-	]
-	},
-	{
+		{
 	  "num": 1,
 	  "type": "dialogue",
 	  "dialogue": [
 		{"text": "so i hear u are a cat"},
 		{"name": "dog", "text": "sus"}
 	  ]
+	},
+	{
+	  "num": 1,
+	  "type": "battle",
+	  "hint": [
+		{"text": "so i hear u are a cat"},
+		{"name": "dog", "text": "sus"}
+	  ],
+	  "word_list": [
+		{"word": "meow", "score": 15}
+	]
 	}
   ],
   "win_dialogue": [
