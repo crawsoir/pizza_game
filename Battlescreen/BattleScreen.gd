@@ -20,6 +20,7 @@ enum states { PREBATTLE, CAT_TURN, DOG_TURN, TRANSITION_DOG, TRANSITION_CAT, LOS
 func _ready():
 	bg_colour.move_in()
 	interactive_dialogue.visible = false
+	GlobalAudioStream.set_music_db(-8)
 
 func _process(delta):
 	match(current_state):

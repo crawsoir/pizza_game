@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjqbxvjaftpii"]
+[gd_scene load_steps=10 format=3 uid="uid://bjqbxvjaftpii"]
 
 [ext_resource type="Script" path="res://Battlescreen/BattleScreen.gd" id="1_cnmqh"]
 [ext_resource type="PackedScene" uid="uid://dmhltxxmje62r" path="res://Battlescreen/BgColour.tscn" id="2_m21c5"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dgh4l1gffvlkb" path="res://Battlescreen/AnimationManager.tscn" id="3_a0wn2"]
 [ext_resource type="Script" path="res://Eventmanager/EventManager.gd" id="4_iu5y7"]
 [ext_resource type="PackedScene" uid="uid://bqgx2nxmfeqhi" path="res://DialogueBox/InteractiveDialogueBox.tscn" id="7_tgbch"]
-[ext_resource type="AudioStream" uid="uid://pj1744ldehei" path="res://assets/pitzah.mp3" id="7_uk3f8"]
 [ext_resource type="Script" path="res://Battlescreen/RoundTimer.gd" id="7_xwc88"]
 
 [sub_resource type="Gradient" id="Gradient_thir2"]
@@ -50,10 +49,6 @@ offset_left = 75.0
 offset_top = 63.0
 offset_right = 600.0
 offset_bottom = 240.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_uk3f8")
-autoplay = true
 
 [node name="RoundTimer" type="TextureProgressBar" parent="."]
 layout_mode = 0

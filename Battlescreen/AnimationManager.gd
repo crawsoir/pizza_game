@@ -49,7 +49,7 @@ func update_state(state):
 				dog.animation = anim_map[DOG_CLOSED]
 				
 		battle_screen.states.CAT_TURN:
-			if current_state == battle_screen.states.DOG_TURN:
+			if current_state == battle_screen.states.DOG_TURN or current_state == battle_screen.states.PREBATTLE:
 				switch_to_cat()
 				
 		battle_screen.states.TRANSITION_DOG:

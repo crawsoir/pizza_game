@@ -1,9 +1,9 @@
 extends Node
 
 var BATTLE_SCREEN = "res://Battlescreen/BattleScreen.tscn"
-var START_SCREEN = "res://StartGameScreen.tscn"
-var GAME_OVER_SCREEN = "res://GameOverScreen.tscn"
-var VICTORY_SCREEN = "res://VictoryScreen.tscn"
+var START_SCREEN = "res://GUI/StartGameScreen.tscn"
+var GAME_OVER_SCREEN = "res://GUI/GameOverScreen.tscn"
+var VICTORY_SCREEN = "res://GUI/VictoryScreen.tscn"
 
 var current_scene = null
 

@@ -5,11 +5,12 @@
 	"cat_name": "who knows"
   },
   "events": [
-	{
-	  "num": 0,
-	  "type": "battle",
-	  "word_list": [
-		{"word": "meow", "score": 15},
+		{
+	  "num": 1,
+	  "type": "dialogue",
+	  "dialogue": [
+		{"text": "so i hear u are a cat"},
+		{"name": "dog", "text": "sus"}
 	  ]
 	},
 	{
